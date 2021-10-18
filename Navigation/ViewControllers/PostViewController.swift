@@ -19,6 +19,7 @@ class PostViewController: UIViewController {
     
     func setupTitle(_ post: Post){
         self.title = post.title
+        //self.
     }
     
     @objc func goToInfo(sender: UIBarButtonItem) {

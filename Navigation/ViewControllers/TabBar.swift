@@ -21,7 +21,7 @@ class TabBar: UITabBarController {
         self.view.backgroundColor = .systemBackground
         
         UITabBar.appearance().barTintColor = .systemBackground
-        //tabBar.tintColor = .label
+        tabBar.tintColor = .label
         
         setUpTabBar()
     }
