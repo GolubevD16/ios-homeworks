@@ -15,9 +15,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        //UINavigationController.sc
+        self.viewWillLayoutSubviews()
+        profileView = ProfileHeaderView()
         
-
     }
     
     override func loadView() {

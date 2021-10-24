@@ -40,7 +40,6 @@ class TabBar: UITabBarController {
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
         navController.topViewController?.title = title
-        //UINavigationBar.appearance().backgroundColor = .white
         updateNavBarAppearance(navController: navController)
         
 
