@@ -24,8 +24,6 @@ class FeedView: UIView {
         super.init(frame: frame)
         setupButton()
         
-
-        //postButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     

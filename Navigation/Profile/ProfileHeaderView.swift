@@ -9,21 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-//    private enum Constants {
-//        static let logoImage: UIImage? = UIImage(named: "hipster cat")
-//        static let logoImageViewFrame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 50)
-//        static let logoImageViewBorderWidth: CGFloat = 3.0
-//        static let logoImageViewBorderColor: CGColor = UIColor.white.cgColor
-//        static let padding: CGFloat = 16
-//    }
-    
-//    lazy var logoImageView: UIImageView = {
-//        logoImageView = UIImageView(image: Constants.logoImage)
-//        logoImageView.frame = Constants.logoImageViewFrame
-//
-//        return logoImageView
-//    }()
-    
     private enum Constants {
         static let avatarImageName: String = "hipster cat"
         static let avatarImageViewFrame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 50)
@@ -31,10 +16,9 @@ class ProfileHeaderView: UIView {
         static let avatarImageViewBorderColor: CGColor = UIColor.white.cgColor
         static let topIndentAvatarView: CGFloat = 16.0
         static let rightIndentAvatarView: CGFloat = 16.0
+        static let rightIndentLabelView: CGFloat = 27.0
         static let nameLabelFont: UIFont = UIFont.systemFont(ofSize: 18, weight: .bold)
         static let nameLabelColor: UIColor = .black
-        static let statusLabelFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-        static let statusLabelColor: UIColor = .gray
     }
     
     var avatarImageView = UIImageView()
@@ -64,8 +48,8 @@ class ProfileHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupImage()
-        setupLayoutImage()
         setupNick()
+        setupLayoutProfile()
         
         
         
@@ -73,13 +57,16 @@ class ProfileHeaderView: UIView {
         //test.backgroundColor = .green
 }
     
-    private func setupLayoutImage() {
+    private func setupLayoutProfile() {
         
-        let navBarHeight = Int(self.safeAreaInsets.top)
+        let navBarHeight = CGFloat(self.safeAreaInsets.top)
         let viewVFL = ["avatar": avatarImageView, "label": nickView]
-        let metrics = ["top" : Constants.topIndentAvatarView + CGFloat(navBarHeight), "right": Constants.rightIndentAvatarView]
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-top-[avatar(150)]|", options: [], metrics: metrics, views: viewVFL))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[avatar(150)]|", options: [], metrics: nil, views: viewVFL))
+        let metrics = ["topAvatar" : Constants.topIndentAvatarView + navBarHeight, "right": Constants.rightIndentAvatarView, "topLabel" : Constants.rightIndentLabelView + navBarHeight]
+        
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-topAvatar-[avatar(150)]|", options: [], metrics: metrics, views: viewVFL))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-right-[avatar(150)]-(20)-[label(100)]|", options: [], metrics: metrics, views: viewVFL))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-topLabel-[label(20)]|", options: [], metrics: metrics, views: viewVFL))
+        
 
     }
     
@@ -98,8 +85,8 @@ class ProfileHeaderView: UIView {
     private func setupNick() {
         nickView.translatesAutoresizingMaskIntoConstraints = false
         nickView.text = "Hipster Cat"
-        nickView.font = Constants.statusLabelFont
-        nickView.textColor = Constants.statusLabelColor
+        nickView.font = Constants.nameLabelFont
+        nickView.textColor = Constants.nameLabelColor
         self.addSubview(nickView)
     }
 }
