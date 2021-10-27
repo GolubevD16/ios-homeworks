@@ -37,3 +37,6 @@ class StatusView: UIView {
     }
     
 }
+
+
+// git clone https://github.com/GolubevD16/ios-homeworks.git -b feature/ios-4

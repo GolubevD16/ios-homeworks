@@ -11,21 +11,89 @@ class ProfileHeaderView: UIView {
     
     private enum Constants {
         static let avatarImageName: String = "hipster cat"
-        static let avatarImageViewFrame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 50)
         static let avatarImageBorderWidth: CGFloat = 3.0
         static let avatarImageViewBorderColor: CGColor = UIColor.white.cgColor
+        
         static let topIndentAvatarView: CGFloat = 16.0
         static let rightIndentAvatarView: CGFloat = 16.0
+        
         static let rightIndentLabelView: CGFloat = 27.0
-        static let nameLabelFont: UIFont = UIFont.systemFont(ofSize: 18, weight: .bold)
-        static let nameLabelColor: UIColor = .black
+        
+        static let LabelFont: UIFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        static let LabelColor: UIColor = .black
+        
+        static let StatusFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+        static let StatusColor: UIColor = .gray
+        
+        static let showStatusButtonCornerRadius: CGFloat = 12.0
+        static let showStatusShadowOffset: CGSize = CGSize(width: 4, height: 4)
+        static let showStatusShadowRadius: CGFloat = 4.0
+        static let showStatusShadowColor: CGColor = UIColor.black.cgColor
+        static let showStatusShadowOpacity: Float = 0.7
+        static let showStatusButtonHeight: CGFloat = 50.0
+        static let topIndentshowStatusButton: CGFloat = 44.0 // увеличил, так как не влазил TextField
+        
+        static let textFieldFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .regular)
+        static let textFieldCornerRadius: CGFloat = 12
+        static let textFieldColor: UIColor = .black
+        static let textFieldBackgroundColor: UIColor = .white
+        static let textFieldBorderWidth: CGFloat = 1
+        static let textFieldBorderColor: CGColor = UIColor.black.cgColor
+        static let textFieldHeight: CGFloat = 40.0
     }
     
-    var avatarImageView = UIImageView()
-    var nickView = UILabel()
+    lazy var avatarImageView: UIImageView = {
+        avatarImageView = UIImageView(image: UIImage(named: Constants.avatarImageName))
+        
+        
+        
+        return avatarImageView
+    }()
     
-    let avatarImage = UIImage(named: Constants.avatarImageName)
+    lazy var nickView: UILabel = {
+        nickView = UILabel()
+        nickView.font = Constants.LabelFont
+        nickView.textColor = Constants.LabelColor
+        
+        return nickView
+    }()
     
+    lazy var statusView: UILabel = {
+        statusView = UILabel()
+        statusView.font = Constants.StatusFont
+        statusView.text = "Waiting for something..."
+        statusView.textColor = Constants.StatusColor
+        
+        return statusView
+    }()
+    
+    lazy var showStatusButton: UIButton = {
+        showStatusButton = UIButton()
+        showStatusButton.setTitleColor(.white, for: .normal)
+        showStatusButton.setTitle("Set status", for: .normal)
+        showStatusButton.backgroundColor = .blue
+        showStatusButton.layer.cornerRadius = Constants.showStatusButtonCornerRadius
+        showStatusButton.layer.shadowColor = Constants.showStatusShadowColor
+        showStatusButton.layer.shadowOffset = Constants.showStatusShadowOffset
+        showStatusButton.layer.shadowOpacity = Constants.showStatusShadowOpacity
+        showStatusButton.layer.shadowRadius = Constants.showStatusShadowRadius
+        
+        return showStatusButton
+    }()
+    
+    lazy var textField: UITextField = {
+        textField = UITextField()
+        textField.layer.cornerRadius = Constants.textFieldCornerRadius
+        textField.backgroundColor = Constants.textFieldBackgroundColor
+        textField.layer.borderColor = Constants.textFieldBorderColor
+        textField.layer.borderWidth = Constants.textFieldBorderWidth
+        textField.font = Constants.textFieldFont
+        textField.textColor = Constants.textFieldColor
+        textField.placeholder = "Set Status..."
+        
+        return textField
+    }()
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,43 +105,48 @@ class ProfileHeaderView: UIView {
         
     }
     
-//    private func setupProfileView(){
-//        test = UIView()
-//        test.translatesAutoresizingMaskIntoConstraints = false
-//        test.backgroundColor = .red
-//        self.addSubview(test)
-//
-//    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         setupImage()
         setupNick()
-        setupLayoutProfile()
+        setupStatus()
+        setupShowStatusButton()
+        setupTextField()
+        setupLayout()
         
-        
-        
-        //test.frame = CGRect(x: 0, y: self.safeAreaInsets.top, width: 100, height: 100)
-        //test.backgroundColor = .green
 }
     
-    private func setupLayoutProfile() {
+    private func setupLayout() {
         
         let navBarHeight = CGFloat(self.safeAreaInsets.top)
-        let viewVFL = ["avatar": avatarImageView, "label": nickView]
-        let metrics = ["topAvatar" : Constants.topIndentAvatarView + navBarHeight, "right": Constants.rightIndentAvatarView, "topLabel" : Constants.rightIndentLabelView + navBarHeight]
+        NSLayoutConstraint.activate([
+            avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.rightIndentAvatarView),
+            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.topIndentAvatarView + navBarHeight),
+            avatarImageView.heightAnchor.constraint(equalToConstant: self.frame.width/3),
+            avatarImageView.widthAnchor.constraint(equalToConstant: self.frame.width/3),
+            
+            nickView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.rightIndentLabelView + navBarHeight),
+            nickView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20),
+            
+            statusView.leadingAnchor.constraint(equalTo: nickView.leadingAnchor),
+            statusView.topAnchor.constraint(equalTo: nickView.bottomAnchor, constant: 60),
+            
+            showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.rightIndentLabelView),
+            showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.rightIndentLabelView),
+            showStatusButton.heightAnchor.constraint(equalToConstant: Constants.showStatusButtonHeight),
+            showStatusButton.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: Constants.topIndentshowStatusButton),
+            
+            textField.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: showStatusButton.trailingAnchor),
+            textField.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -5),
+            textField.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight)
+        ])
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-topAvatar-[avatar(150)]|", options: [], metrics: metrics, views: viewVFL))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-right-[avatar(150)]-(20)-[label(100)]|", options: [], metrics: metrics, views: viewVFL))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-topLabel-[label(20)]|", options: [], metrics: metrics, views: viewVFL))
-        
-
     }
     
     
     private func setupImage() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        avatarImageView.backgroundColor = UIColor.red
         avatarImageView.image = UIImage(named: Constants.avatarImageName)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
@@ -85,9 +158,23 @@ class ProfileHeaderView: UIView {
     private func setupNick() {
         nickView.translatesAutoresizingMaskIntoConstraints = false
         nickView.text = "Hipster Cat"
-        nickView.font = Constants.nameLabelFont
-        nickView.textColor = Constants.nameLabelColor
         self.addSubview(nickView)
+    }
+    
+    private func setupStatus() {
+        statusView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(statusView)
+    }
+    
+    private func setupShowStatusButton(){
+        showStatusButton.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(showStatusButton)
+    }
+    
+    private func setupTextField(){
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textField)
+        
     }
 }
 
