@@ -100,8 +100,6 @@ class ProfileHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
         
     }
     
@@ -140,6 +138,7 @@ class ProfileHeaderView: UIView {
             textField.trailingAnchor.constraint(equalTo: showStatusButton.trailingAnchor),
             textField.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -5),
             textField.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight)
+            
         ])
         
     }
