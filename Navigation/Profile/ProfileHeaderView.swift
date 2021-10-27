@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
         static let showStatusShadowColor: CGColor = UIColor.black.cgColor
         static let showStatusShadowOpacity: Float = 0.7
         static let showStatusButtonHeight: CGFloat = 50.0
-        static let topIndentshowStatusButton: CGFloat = 44.0 // увеличил, так как не влазил TextField
+        static let topIndentshowStatusButton: CGFloat = 54.0 // увеличил, так как не влазил TextField
         
         static let textFieldFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .regular)
         static let textFieldCornerRadius: CGFloat = 12
@@ -172,6 +172,8 @@ class ProfileHeaderView: UIView {
     
     private func setupTextField(){
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.leftViewMode = .always
         self.addSubview(textField)
         
     }
