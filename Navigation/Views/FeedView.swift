@@ -9,12 +9,29 @@ import UIKit
 
 class FeedView: UIView {
     
+    let stack = UIStackView()
+    lazy var firstButton: UIButton = {
+        firstButton = UIButton()
+        firstButton.setTitle("Первая кнопка", for: .normal)
+        firstButton.backgroundColor = .brown
+        
+        return firstButton
+    }()
+    
+    lazy var secondButton: UIButton = {
+        secondButton = UIButton()
+        secondButton.setTitle("Вторая кнопка", for: .normal)
+        secondButton.backgroundColor = .systemRed
+        
+        return secondButton
+    }()
+    
     private enum Constants{
         static let buttomWidth: Double = 150
         static let buttomHeight: Int = 44
     }
-    var postButton: UIButton!
     
+    var postButton: UIButton!
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -22,19 +39,39 @@ class FeedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupButton()
-        
     }
     
-    
-    
-    private func setupButton() {
-        postButton = UIButton(type: .roundedRect)
-        postButton.frame = CGRect(x: Double(self.frame.size.width/2) - Constants.buttomWidth/2, y: Double(self.frame.size.height/2) - Double(Constants.buttomHeight/2), width: Constants.buttomWidth, height: Double(Constants.buttomHeight))
-        postButton.setTitle("Просмотреть пост", for: .normal)
-        postButton.setTitleColor(.blue, for: .normal)
-        self.addSubview(postButton)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupStack()
         
+        setupLayout()
+    }
+    
+    private func setupLayout(){
+        NSLayoutConstraint.activate([
+            stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        ])
+    }
+    
+    private func setupStack(){
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        setupFirstButton()
+        setupSecondButton()
+        stack.axis = .vertical
+        stack.spacing = 10
+        self.addSubview(stack)
+    }
+    
+    private func setupFirstButton() {
+        firstButton.translatesAutoresizingMaskIntoConstraints = false
+        stack.addArrangedSubview(firstButton)
+    }
+    
+    private func setupSecondButton(){
+        secondButton.translatesAutoresizingMaskIntoConstraints = false
+        stack.addArrangedSubview(secondButton)
     }
 }
 

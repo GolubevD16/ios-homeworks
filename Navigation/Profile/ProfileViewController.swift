@@ -11,45 +11,57 @@ class ProfileViewController: UIViewController {
     
     var profileView: ProfileHeaderView!
     private var textStatus = ""
+    
+    lazy var newButton: UIButton = {
+        newButton = UIButton()
+        newButton.setTitle("New button", for: .normal)
+        newButton.backgroundColor = .red
+
+        return newButton
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupProfile()
         view.addSubview(profileView)
+        setupNewButton()
         setupLayoutProfileView()
-        
-        
     }
     
     override func loadView() {
         super.loadView()
-        view.backgroundColor = .lightGray
         
     }
     
     private func setupProfile() {
-        
         profileView = ProfileHeaderView(frame: self.view.frame)
         profileView.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         profileView.textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
-        
-        
     }
     
     private func setupLayoutProfileView() {
         profileView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            profileView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            profileView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            profileView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            profileView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            profileView.heightAnchor.constraint(equalToConstant: 220),
+            newButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            newButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            newButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
          ])
+    }
+    
+    private func setupNewButton(){
+        newButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(newButton)
     }
     
     @objc func buttonPressed() {
         //print(profileView.statusView.text ?? "Error") для задания без звёздочки
-        profileView.statusView.text = textStatus
+        if textStatus != ""{
+            profileView.statusView.text = textStatus
+        }
     }
     
     @objc func statusTextChanged(_ textField: UITextField){

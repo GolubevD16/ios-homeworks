@@ -44,18 +44,16 @@ class ProfileHeaderView: UIView {
     
     lazy var avatarImageView: UIImageView = {
         avatarImageView = UIImageView(image: UIImage(named: Constants.avatarImageName))
-        
-        
-        
+
         return avatarImageView
     }()
     
-    lazy var nickView: UILabel = {
-        nickView = UILabel()
-        nickView.font = Constants.LabelFont
-        nickView.textColor = Constants.LabelColor
+    lazy var fullNameLabel: UILabel = {
+        fullNameLabel = UILabel()
+        fullNameLabel.font = Constants.LabelFont
+        fullNameLabel.textColor = Constants.LabelColor
         
-        return nickView
+        return fullNameLabel
     }()
     
     lazy var statusView: UILabel = {
@@ -100,6 +98,7 @@ class ProfileHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .lightGray
         
     }
     
@@ -110,12 +109,11 @@ class ProfileHeaderView: UIView {
         setupStatus()
         setupShowStatusButton()
         setupTextField()
-        setupLayout()
         
-}
+        setupLayout()
+    }
     
     private func setupLayout() {
-        
         let navBarHeight = CGFloat(self.safeAreaInsets.top)
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.rightIndentAvatarView),
@@ -123,11 +121,11 @@ class ProfileHeaderView: UIView {
             avatarImageView.heightAnchor.constraint(equalToConstant: self.frame.width/3),
             avatarImageView.widthAnchor.constraint(equalToConstant: self.frame.width/3),
             
-            nickView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.rightIndentLabelView + navBarHeight),
-            nickView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20),
+            fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.rightIndentLabelView + navBarHeight),
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20),
             
-            statusView.leadingAnchor.constraint(equalTo: nickView.leadingAnchor),
-            statusView.topAnchor.constraint(equalTo: nickView.bottomAnchor, constant: 60),
+            statusView.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor),
+            statusView.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 40),
             
             showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.rightIndentLabelView),
             showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.rightIndentLabelView),
@@ -137,12 +135,9 @@ class ProfileHeaderView: UIView {
             textField.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: showStatusButton.trailingAnchor),
             textField.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -5),
-            textField.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight)
-            
+            textField.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight),
         ])
-        
     }
-    
     
     private func setupImage() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -155,9 +150,9 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupNick() {
-        nickView.translatesAutoresizingMaskIntoConstraints = false
-        nickView.text = "Hipster Cat"
-        self.addSubview(nickView)
+        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        fullNameLabel.text = "Hipster Cat"
+        self.addSubview(fullNameLabel)
     }
     
     private func setupStatus() {

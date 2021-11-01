@@ -19,10 +19,6 @@ class TabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
-        //UITabBar.appearance().barTintColor = .systemBackground
-        //tabBar.tintColor = .label
-        
         setUpTabBar()
         updateTabBarAppearance()
     }
@@ -41,8 +37,6 @@ class TabBar: UITabBarController {
         navController.tabBarItem.image = image
         navController.topViewController?.title = title
         updateNavBarAppearance(navController: navController)
-        
-
         return navController
     }
     

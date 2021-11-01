@@ -33,10 +33,5 @@ class StatusView: UIView {
         alertButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         alertButton.layer.backgroundColor = UIColor.red.cgColor
         self.addSubview(alertButton)
-        
     }
-    
 }
-
-
-// git clone https://github.com/GolubevD16/ios-homeworks.git -b feature/ios-4

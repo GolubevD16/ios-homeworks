@@ -16,20 +16,29 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedView = FeedView(frame: self.view.frame)
+        setupFeed()
+        setupLayoutFeedView()
     }
     
     override func loadView() {
         super.loadView()
-        setupFeed()
     }
     
-
+    private func setupLayoutFeedView() {
+        feedView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            feedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            feedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            feedView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            feedView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+         ])
+    }
+    
     private func setupFeed() {
-        feedView = FeedView(frame: CGRect(x: 0, y: 30, width: view.frame.size.width, height: view.frame.size.height - 30))
-        feedView.postButton.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
-        
+        feedView.firstButton.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
+        feedView.secondButton.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
         view.addSubview(feedView)
-        
     }
     
     @objc func clickButton(_ sender: Any) {
@@ -38,5 +47,4 @@ class FeedViewController: UIViewController {
         postVC.setupTitle(post)
         navigationController?.pushViewController(postVC, animated: true)
     }
-
 }
