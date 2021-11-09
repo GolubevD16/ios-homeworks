@@ -23,7 +23,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProfile()
-        view.addSubview(profileView)
         setupNewButton()
         setupLayoutProfileView()
     }
@@ -37,6 +36,7 @@ class ProfileViewController: UIViewController {
         profileView = ProfileHeaderView(frame: self.view.frame)
         profileView.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         profileView.textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
+        view.addSubview(profileView)
     }
     
     private func setupLayoutProfileView() {
@@ -57,10 +57,31 @@ class ProfileViewController: UIViewController {
         self.view.addSubview(newButton)
     }
     
+    private func statusTextFieldAnimate() {
+        UIView.animate(withDuration: 0.5) {
+            [weak self] in
+            self?.profileView.textField.layer.borderWidth = 2
+            self?.profileView.textField.layer.borderColor = UIColor.red.cgColor
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    private func returnStatusTextFieldAnimate() {
+        UIView.animate(withDuration: 0.5) {
+            [weak self] in
+            self?.profileView.textField.layer.borderWidth = 0
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
     @objc func buttonPressed() {
         //print(profileView.statusView.text ?? "Error") для задания без звёздочки
         if textStatus != ""{
             profileView.statusView.text = textStatus
+            returnStatusTextFieldAnimate()
+        }
+        else {
+            statusTextFieldAnimate()
         }
     }
     
