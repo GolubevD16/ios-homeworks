@@ -42,9 +42,8 @@ class FeedViewController: UIViewController {
     }
     
     @objc func clickButton(_ sender: Any) {
-        let post = Post(title: Constains.postTitle)
         let postVC: PostViewController = PostViewController()
-        postVC.setupTitle(post)
+        postVC.setupTitle(Constains.postTitle)
         navigationController?.pushViewController(postVC, animated: true)
     }
 }

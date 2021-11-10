@@ -66,11 +66,6 @@
 		0A45CF02271E34B000D61300 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				0A905DD62739EB6F008A2FCD /* LogInViewControllerDelegate.swift */,
-				0ADA2A61271CC93600882297 /* ProfileViewController.swift */,
-				0A45CF03271E34EA00D61300 /* ProfileHeaderView.swift */,
-				0A2674782736048D0094D00E /* LogInViewController.swift */,
-				0A26747A273605E50094D00E /* LoginView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -78,10 +73,12 @@
 		0A9A05C4271C809A00D49AEE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0A9A05C0271C726F00D49AEE /* TabBar.swift */,
-				0A925FD4271CA4B500ADEC52 /* PostViewController.swift */,
-				0A9D1152271B8347003E8C14 /* FeedViewController.swift */,
-				0A45CEF4271CCF7B00D61300 /* StatusViewController.swift */,
+				0AE04E9F273B4A90006F11BD /* TabBar */,
+				0AE04E9E273B4A77006F11BD /* LogIn */,
+				0AE04EA1273B4ADB006F11BD /* Post */,
+				0AE04EA2273B4AFB006F11BD /* Profile */,
+				0AE04EA3273B4B09006F11BD /* Feed */,
+				0AE04EA4273B4B17006F11BD /* Status */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -89,10 +86,71 @@
 		0ADA2A5C271CC73D00882297 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A45CF03271E34EA00D61300 /* ProfileHeaderView.swift */,
+				0A26747A273605E50094D00E /* LoginView.swift */,
 				0ADA2A5F271CC8BA00882297 /* FeedView.swift */,
 				0A45CEF6271CD0F800D61300 /* StatusView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0AE04E9E273B4A77006F11BD /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				0A2674782736048D0094D00E /* LogInViewController.swift */,
+				0A905DD62739EB6F008A2FCD /* LogInViewControllerDelegate.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		0AE04E9F273B4A90006F11BD /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0A9A05C0271C726F00D49AEE /* TabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		0AE04EA0273B4AB4006F11BD /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A10EFB42736011F007C4CC3 /* UIView-extension.swift */,
+				0A26747C27360FEE0094D00E /* TextField-extension.swift */,
+				0A905DD42739D960008A2FCD /* UIImage-extension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		0AE04EA1273B4ADB006F11BD /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				0A925FD4271CA4B500ADEC52 /* PostViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		0AE04EA2273B4AFB006F11BD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0ADA2A61271CC93600882297 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0AE04EA3273B4B09006F11BD /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				0A9D1152271B8347003E8C14 /* FeedViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		0AE04EA4273B4B17006F11BD /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				0A45CEF4271CCF7B00D61300 /* StatusViewController.swift */,
+			);
+			path = Status;
 			sourceTree = "<group>";
 		};
 		0AFD77D32718D6F3006F8DBB = {
@@ -114,9 +172,7 @@
 		0AFD77DE2718D6F3006F8DBB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				0A10EFB42736011F007C4CC3 /* UIView-extension.swift */,
-				0A26747C27360FEE0094D00E /* TextField-extension.swift */,
-				0A905DD42739D960008A2FCD /* UIImage-extension.swift */,
+				0AE04EA0273B4AB4006F11BD /* extensions */,
 				0AFD77DF2718D6F3006F8DBB /* AppDelegate.swift */,
 				0AFD77E12718D6F3006F8DBB /* SceneDelegate.swift */,
 				0A45CEF2271CCB8200D61300 /* Post.swift */,

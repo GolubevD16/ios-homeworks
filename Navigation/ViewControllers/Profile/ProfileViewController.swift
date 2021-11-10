@@ -69,7 +69,8 @@ class ProfileViewController: UIViewController {
     private func returnStatusTextFieldAnimate() {
         UIView.animate(withDuration: 0.5) {
             [weak self] in
-            self?.profileView.textField.layer.borderWidth = 0
+            self?.profileView.textField.layer.borderWidth = 1
+            self?.profileView.textField.layer.borderColor = UIColor.black.cgColor
             self?.view.layoutIfNeeded()
         }
     }
