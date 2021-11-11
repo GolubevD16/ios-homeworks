@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    private var statusText: String = ""
+    
     private enum Constants {
         static let avatarImageName: String = "hipster cat"
         static let avatarImageBorderWidth: CGFloat = 3.0
@@ -70,24 +72,30 @@ class ProfileHeaderView: UIView {
         showStatusButton.setTitleColor(.white, for: .normal)
         showStatusButton.setTitle("Set status", for: .normal)
         showStatusButton.backgroundColor = .blue
+        
         showStatusButton.layer.cornerRadius = Constants.showStatusButtonCornerRadius
         showStatusButton.layer.shadowColor = Constants.showStatusShadowColor
         showStatusButton.layer.shadowOffset = Constants.showStatusShadowOffset
         showStatusButton.layer.shadowOpacity = Constants.showStatusShadowOpacity
         showStatusButton.layer.shadowRadius = Constants.showStatusShadowRadius
         
+        showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
         return showStatusButton
     }()
     
     lazy var textField: UITextField = {
         textField = UITextField()
-        textField.layer.cornerRadius = Constants.textFieldCornerRadius
         textField.backgroundColor = Constants.textFieldBackgroundColor
-        textField.layer.borderColor = Constants.textFieldBorderColor
-        textField.layer.borderWidth = Constants.textFieldBorderWidth
         textField.font = Constants.textFieldFont
         textField.textColor = Constants.textFieldColor
         textField.placeholder = "Set Status..."
+        
+        textField.layer.cornerRadius = Constants.textFieldCornerRadius
+        textField.layer.borderColor = Constants.textFieldBorderColor
+        textField.layer.borderWidth = Constants.textFieldBorderWidth
+        
+        textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
         return textField
     }()
@@ -168,9 +176,28 @@ class ProfileHeaderView: UIView {
     private func setupTextField(){
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.layer.borderColor = Constants.textFieldBorderColor
+        textField.layer.borderWidth = Constants.textFieldBorderWidth
         textField.leftViewMode = .always
         self.addSubview(textField)
+    }
+    
+    @objc func buttonPressed() {
+        guard !statusText.isEmpty else {
+            UIView.animate(withDuration: 0.5) {
+                [weak self] in
+                self?.textField.layer.borderWidth = 2
+                self?.textField.layer.borderColor = UIColor.red.cgColor
+                self?.layoutIfNeeded()
+            }
+            return
+        }
         
+        statusView.text = statusText
+    }
+    
+    @objc func statusTextChanged(_ textField: UITextField) {
+        statusText = textField.text ?? " "
     }
 }
 

@@ -9,22 +9,33 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    var profileView: ProfileHeaderView!
-    private var textStatus = ""
+    private let posts = PostData.getPosts()
     
-    lazy var newButton: UIButton = {
-        newButton = UIButton()
-        newButton.setTitle("New button", for: .normal)
-        newButton.backgroundColor = .red
-
-        return newButton
+    lazy var profileHeaderView: ProfileHeaderView = {
+        let profileHeaderView = ProfileHeaderView()
+        
+        return profileHeaderView
     }()
-
+    
+    lazy var tableView: UITableView = {
+        tableView = UITableView(frame: .zero, style: .plain)
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupProfile()
-        setupNewButton()
-        setupLayoutProfileView()
+        view.addSubview(tableView)
+        tableView.toAutoLayout()
+        profileHeaderView.toAutoLayout()
+        tableView.tableHeaderView = profileHeaderView
+        
+        setupLayout()
+    
+        profileHeaderView.layoutIfNeeded()
+        
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: .tableId)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func loadView() {
@@ -32,62 +43,40 @@ class ProfileViewController: UIViewController {
         
     }
     
-    private func setupProfile() {
-        profileView = ProfileHeaderView(frame: self.view.frame)
-        profileView.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        profileView.textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
-        view.addSubview(profileView)
-    }
-    
-    private func setupLayoutProfileView() {
-        profileView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupLayout() {
         NSLayoutConstraint.activate([
-            profileView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileView.heightAnchor.constraint(equalToConstant: 220),
-            newButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            newButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            newButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-         ])
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+            profileHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+        ])
+    }
+}
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
     }
     
-    private func setupNewButton(){
-        newButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(newButton)
-    }
-    
-    private func statusTextFieldAnimate() {
-        UIView.animate(withDuration: 0.5) {
-            [weak self] in
-            self?.profileView.textField.layer.borderWidth = 2
-            self?.profileView.textField.layer.borderColor = UIColor.red.cgColor
-            self?.view.layoutIfNeeded()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: .tableId, for: indexPath) as? TableViewCell else {
+            fatalError()
         }
+        let post = posts[indexPath.row]
+        
+        cell.autor.text = post.author
+        cell.imageViewPost.image = UIImage(named: post.image)
+        cell.descriptionPost.text = post.description
+        cell.likesPost.text = "Likes: \(post.likes)"
+        cell.viewsPost.text = "Views: \(post.views)"
+        
+        return cell
     }
-    
-    private func returnStatusTextFieldAnimate() {
-        UIView.animate(withDuration: 0.5) {
-            [weak self] in
-            self?.profileView.textField.layer.borderWidth = 1
-            self?.profileView.textField.layer.borderColor = UIColor.black.cgColor
-            self?.view.layoutIfNeeded()
-        }
-    }
-    
-    @objc func buttonPressed() {
-        //print(profileView.statusView.text ?? "Error") для задания без звёздочки
-        if textStatus != ""{
-            profileView.statusView.text = textStatus
-            returnStatusTextFieldAnimate()
-        }
-        else {
-            statusTextFieldAnimate()
-        }
-    }
-    
-    @objc func statusTextChanged(_ textField: UITextField){
-        guard let text = textField.text else { return }
-        textStatus = text
-    }
+}
+
+private extension String {
+    static let tableId = "TableViewCellReuseID"
 }
