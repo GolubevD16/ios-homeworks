@@ -33,7 +33,5 @@ class StatusView: UIView {
         alertButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         alertButton.layer.backgroundColor = UIColor.red.cgColor
         self.addSubview(alertButton)
-        
     }
-    
 }

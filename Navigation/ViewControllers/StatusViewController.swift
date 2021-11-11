@@ -14,8 +14,6 @@ class StatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue
-
-        // Do any additional setup after loading the view.
     }
     
     override func loadView() {
@@ -26,9 +24,7 @@ class StatusViewController: UIViewController {
     private func setupStatus() {
         statusView = StatusView(frame: CGRect(x: 0, y: 30, width: view.frame.size.width, height: view.frame.size.height - 30))
         statusView.alertButton.addTarget(self, action: #selector(clickAlertAction(_:)), for: .touchUpInside)
-        
         view.addSubview(statusView)
-        
     }
 
     
@@ -43,5 +39,4 @@ class StatusViewController: UIViewController {
         }))
         present(alert, animated: true, completion: nil)
     }
-
 }
