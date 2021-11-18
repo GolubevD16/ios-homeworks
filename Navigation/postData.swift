@@ -40,7 +40,6 @@ class PostData {
                 views: 12345
             )
         ]
-        
         return posts
     }
 }

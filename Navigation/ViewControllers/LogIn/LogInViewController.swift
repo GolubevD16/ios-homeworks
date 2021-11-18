@@ -9,14 +9,17 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-    var loginView: LoginView!
+    lazy var loginView: LoginView = {
+        loginView = LoginView()
+        loginView.delegate = self
+        view.addSubview(loginView)
+        
+        return loginView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLogin()
         navigationController?.navigationBar.isHidden = true
-        view.addSubview(loginView)
-        loginView.delegate = self
         
         setupLayoutLoginView()
         registerForKeyboardNotification()
@@ -24,10 +27,6 @@ class LogInViewController: UIViewController {
     
     deinit{
         removeForKeyboardNotification()
-    }
-    
-    private func setupLogin(){
-        loginView = LoginView(frame: self.view.bounds)
     }
     
     private func setupLayoutLoginView(){
