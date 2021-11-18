@@ -132,7 +132,7 @@ class ProfileHeaderView: UIView {
             showStatusButton.heightAnchor.constraint(equalToConstant: Constants.showStatusButtonHeight),
             showStatusButton.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: Constants.topIndentshowStatusButton),
             
-            textField.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
+            textField.leadingAnchor.constraint(equalTo: statusView.leadingAnchor, constant: -10),
             textField.trailingAnchor.constraint(equalTo: showStatusButton.trailingAnchor),
             textField.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -5),
             textField.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight),
@@ -156,7 +156,7 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupStatus() {
-        statusView.translatesAutoresizingMaskIntoConstraints = false
+        statusView.toAutoLayout()
         self.addSubview(statusView)
     }
     

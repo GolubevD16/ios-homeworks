@@ -13,7 +13,7 @@ class FeedView: UIView {
     lazy var firstButton: UIButton = {
         firstButton = UIButton()
         firstButton.setTitle("Первая кнопка", for: .normal)
-        firstButton.backgroundColor = .brown
+        firstButton.backgroundColor = .systemCyan
         
         return firstButton
     }()
@@ -21,7 +21,7 @@ class FeedView: UIView {
     lazy var secondButton: UIButton = {
         secondButton = UIButton()
         secondButton.setTitle("Вторая кнопка", for: .normal)
-        secondButton.backgroundColor = .systemRed
+        secondButton.backgroundColor = .systemPink
         
         return secondButton
     }()
@@ -52,6 +52,7 @@ class FeedView: UIView {
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            stack.widthAnchor.constraint(equalToConstant: 150),
         ])
     }
     
