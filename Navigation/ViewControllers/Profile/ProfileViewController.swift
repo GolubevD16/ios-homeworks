@@ -139,7 +139,7 @@ class ProfileViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300), execute: {
             let animationCornerRadius = CABasicAnimation(keyPath: "cornerRadius")
             animationCornerRadius.fromValue = 0
-            animationCornerRadius.toValue = 69
+            animationCornerRadius.toValue = self.avatarImageView.bounds.height / 2
             animationCornerRadius.duration = 0.5
             self.avatarImageView.layer.add(animationCornerRadius, forKey: "avatarViewAnimationCornerRadius")
         })
@@ -196,7 +196,7 @@ class ProfileViewController: UIViewController {
     private func setupImage() {
         avatarImageView.clipsToBounds = true
 
-        avatarImageView.layer.cornerRadius = 69
+        avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
     }
