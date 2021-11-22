@@ -91,6 +91,7 @@ class LoginView: UIView {
         stackView.distribution = .fillEqually
         addEmailTextField()
         addPasswordTextField()
+        
         scrollView.addSubview(stackView)
     }
     
