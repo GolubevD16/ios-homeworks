@@ -25,7 +25,7 @@ class TabBar: UITabBarController {
     
     func setUpTabBar(){
         viewControllers = [createNavigationController(for: FeedViewController(), title:                     Constans.feedTitle, image: UIImage(systemName:                               Constans.feedImageName) ?? UIImage()),
-                           createNavigationController(for: LogInViewController(), title: Constans.profileTitle, image: UIImage(systemName: Constans.profileImageName) ?? UIImage())
+                           createNavigationController(for: ProfileViewController(), title: Constans.profileTitle, image: UIImage(systemName: Constans.profileImageName) ?? UIImage())
         ]
     }
     

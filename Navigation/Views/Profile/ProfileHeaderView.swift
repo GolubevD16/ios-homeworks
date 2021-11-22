@@ -112,11 +112,11 @@ class ProfileHeaderView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupImage()
         setupNick()
         setupStatus()
         setupShowStatusButton()
         setupTextField()
+        setupImage()
         
         setupLayout()
     }
