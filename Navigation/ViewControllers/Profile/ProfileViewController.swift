@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         view.addSubview(tableView)
         tableView.toAutoLayout()
         profileHeaderView.toAutoLayout()
@@ -33,7 +34,8 @@ class ProfileViewController: UIViewController {
     
         profileHeaderView.layoutIfNeeded()
         
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: .tableId)
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: .PostTableId)
+        tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: .photosTableId)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -41,6 +43,11 @@ class ProfileViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupLayout() {
@@ -57,26 +64,57 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return posts.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: .tableId, for: indexPath) as? TableViewCell else {
-            fatalError()
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: .photosTableId, for: indexPath) as? PhotoTableViewCell else { fatalError() }
+            cell.firstPhoto.image = UIImage(named: "slon")
+            cell.secondPhoto.image = UIImage(named: "dragon")
+            cell.thirdPhoto.image = UIImage(named: "airbus")
+            cell.fourthPhoto.image = UIImage(named: "belka")
+            return cell
+            
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: .PostTableId, for: indexPath) as? TableViewCell else { fatalError() }
+            let post: Post = posts[indexPath.row]
+            cell.autor.text = post.author
+            cell.imageViewPost.image = UIImage(named: post.image)
+            cell.descriptionPost.text = post.description
+            cell.likesPost.text = "Likes: \(post.likes)"
+            cell.viewsPost.text = "Views: \(post.views)"
+            cell.selectionStyle = .none
+            return cell
+            
+        default:
+            return UITableViewCell()
         }
-        let post = posts[indexPath.row]
-        
-        cell.autor.text = post.author
-        cell.imageViewPost.image = UIImage(named: post.image)
-        cell.descriptionPost.text = post.description
-        cell.likesPost.text = "Likes: \(post.likes)"
-        cell.viewsPost.text = "Views: \(post.views)"
-        
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let photoVc = PhotosViewController()
+            self.navigationController?.pushViewController(photoVc, animated: true)
+        }
     }
 }
 
 private extension String {
-    static let tableId = "TableViewCellReuseID"
+    static let PostTableId = "PostTableViewCellReuseID"
+    static let photosTableId = "PhotosTableViewCellReuseID"
 }

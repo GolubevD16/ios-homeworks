@@ -9,10 +9,17 @@ import UIKit
 
 class LoginView: UIView {
     var delegate: LogInViewControllerDelegate?
-    let scrollView = UIScrollView()
+    
     let stackView = UIStackView()
     let emailTextField = UITextField()
     let passwordTextField = UITextField()
+    
+    lazy var scrollView: UIScrollView = {
+        scrollView = UIScrollView()
+        scrollView.toAutoLayout()
+        
+        return scrollView
+    }()
     
     lazy var logoView: UIImageView = {
         logoView = UIImageView(image: UIImage(named: "logo"))
@@ -49,9 +56,7 @@ class LoginView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupStack()
-        scrollView.toAutoLayout()
-        scrollView.addSubview(logoView)
-        scrollView.addSubview(logInButton)
+        scrollView.addSubviews([logoView, logInButton])
         self.addSubviews([scrollView])
         scrollView.contentSize = CGSize(width: self.bounds.width, height: self.bounds.height)
         scrollView.isScrollEnabled = false
