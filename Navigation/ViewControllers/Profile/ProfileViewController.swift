@@ -51,7 +51,6 @@ class ProfileViewController: UIViewController {
     lazy var transparentView: UIView = {
         transparentView = UIView()
         transparentView.frame = self.view.frame
-        //transparentView.backgroundColor = .green
         transparentView.backgroundColor = .black
         transparentView.alpha = 0
         
@@ -107,7 +106,7 @@ class ProfileViewController: UIViewController {
         animationCornerRadius.isRemovedOnCompletion = false
         animationCornerRadius.fillMode = .forwards
         self.avatarImageView.layer.add(animationCornerRadius, forKey: "avatarViewAnimationCornerRadius")
-        
+
         UIView.animate(withDuration: 0.5) {
             NSLayoutConstraint.deactivate(self.opeNconstraints)
             NSLayoutConstraint.activate(self.closeConstraints)
@@ -115,7 +114,7 @@ class ProfileViewController: UIViewController {
             self.view.layoutIfNeeded()
             self.transparentView.alpha = 0.5
         }
-        
+
         UIView.animate(withDuration: 0.3, delay: 0.5) {
             self.closeButton.alpha = 1
         }
@@ -133,8 +132,7 @@ class ProfileViewController: UIViewController {
             self.view.layoutIfNeeded()
             self.transparentView.alpha = 0
             
-            }
-        
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300), execute: {
             let animationCornerRadius = CABasicAnimation(keyPath: "cornerRadius")
@@ -203,7 +201,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        setupLayout()
     }
     
     private func setupLayout() {
