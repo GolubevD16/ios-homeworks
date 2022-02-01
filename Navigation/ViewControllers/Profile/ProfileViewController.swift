@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
@@ -65,6 +66,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        #if DEBUG
+        self.view.backgroundColor = .red
+        #endif
         view.addSubview(tableView)
         tableView.toAutoLayout()
         profileHeaderView.toAutoLayout()
