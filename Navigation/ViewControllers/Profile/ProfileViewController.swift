@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
@@ -252,7 +253,20 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .PostTableId, for: indexPath) as? TableViewCell else { fatalError() }
             let post: Post = posts[indexPath.row]
             cell.autor.text = post.author
-            cell.imageViewPost.image = UIImage(named: post.image)
+            let imageProcessor = ImageProcessor()
+            
+            guard let image = UIImage(named: post.image) else { return UITableViewCell()}
+            guard let filter = ColorFilter.allCases.randomElement() else { return UITableViewCell()}
+            DispatchQueue.main.async {
+                imageProcessor.processImage(
+                    sourceImage: image,
+                    filter: filter,
+                    completion: { image in
+                        cell.imageViewPost.image = image
+                    }
+                )
+            }
+
             cell.descriptionPost.text = post.description
             cell.likesPost.text = "Likes: \(post.likes)"
             cell.viewsPost.text = "Views: \(post.views)"
