@@ -133,7 +133,7 @@ class ProfileHeaderView: UIView {
         
         fullNameLabel.snp.makeConstraints { maker in
             maker.top.equalToSuperview().inset(Constants.rightIndentLabelView + navBarHeight)
-            maker.leading.equalTo(avatarImageView).inset(20 + avatarImageView.bounds.width)
+            maker.leading.equalTo(avatarImageView.snp.trailing).offset(20)
         }
         
         statusView.snp.makeConstraints { maker in
