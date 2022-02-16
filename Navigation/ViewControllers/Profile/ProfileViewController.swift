@@ -12,6 +12,18 @@ import iOSIntPackage
 class ProfileViewController: UIViewController {
     
     private let posts = PostData.getPosts()
+    var userService: UserService
+    var name: String
+    
+    init(userService: UserService, name:String){
+        self.userService = userService
+        self.name = name
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView()
@@ -73,7 +85,9 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         tableView.toAutoLayout()
         profileHeaderView.toAutoLayout()
+        configureProfileHeaderView()
         tableView.tableHeaderView = profileHeaderView
+        
         
         setupLayout()
     
@@ -96,6 +110,11 @@ class ProfileViewController: UIViewController {
         avatarImageView.isUserInteractionEnabled = true
         self.profileHeaderView.avatarImageView.addGestureRecognizer(gestureOpen)
         self.closeButton.addGestureRecognizer(gestureClose)
+    }
+    
+    private func configureProfileHeaderView() {
+            guard let user = userService.getUser(name: name) else { return }
+            profileHeaderView.initWithUser(user: user)
     }
     
     @objc private func hanbleOpenTapGestureRecognizer(gesture: UITapGestureRecognizer){

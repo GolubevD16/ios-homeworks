@@ -158,7 +158,6 @@ class ProfileHeaderView: UIView {
     
     private func setupImage() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        avatarImageView.image = UIImage(named: Constants.avatarImageName)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
         avatarImageView.layer.borderWidth = Constants.avatarImageBorderWidth
@@ -168,7 +167,7 @@ class ProfileHeaderView: UIView {
     
     private func setupNick() {
         fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        fullNameLabel.text = "Hipster Cat"
+        //fullNameLabel.text = "Hipster Cat"
         self.addSubview(fullNameLabel)
     }
     
@@ -189,6 +188,12 @@ class ProfileHeaderView: UIView {
         textField.layer.borderWidth = Constants.textFieldBorderWidth
         textField.leftViewMode = .always
         self.addSubview(textField)
+    }
+    
+    func initWithUser(user: User){
+        fullNameLabel.text = user.fullName
+        statusView.text = user.status
+        avatarImageView.image = UIImage(named: user.avatar)
     }
     
     @objc func buttonPressed() {

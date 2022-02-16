@@ -66,8 +66,19 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController: LogInViewControllerDelegate {
     
-    func tappedButton(sender: UIButton) {
-        let profileVc = ProfileViewController()
+    func tappedButton(sender: UIButton, name: String) {
+        var currentUser: UserService
+#if DEBUG
+            currentUser = TestUserService()
+#else
+           let user = User(
+            fullName: name,
+            avatar: "belka",
+            status: "Waiting for something..."
+           )
+           currentUser = CurrentUserService(user: user)
+#endif
+        let profileVc = ProfileViewController(userService: currentUser, name: name)
         navigationController?.pushViewController(profileVc, animated: true)
     }
 }
