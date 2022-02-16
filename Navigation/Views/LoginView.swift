@@ -139,7 +139,7 @@ class LoginView: UIView {
         guard let emailText = emailTextField.text else { return }
         guard let passwordText = passwordTextField.text else { return }
         if !emailText.isEmpty && !passwordText.isEmpty {
-            delegate?.tappedButton(sender: sender)
+            delegate?.tappedButton(sender: sender, name: emailTextField.text ?? "")
         } else {
             animateButton()
         }

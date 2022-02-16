@@ -10,5 +10,5 @@ import UIKit
 
 protocol LogInViewControllerDelegate {
     
-    func tappedButton(sender: UIButton)
+    func tappedButton(sender: UIButton, name: String)
 }
