@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 protocol LogInViewControllerDelegate {
-    
     func tappedButton(sender: UIButton, name: String)
 }
 

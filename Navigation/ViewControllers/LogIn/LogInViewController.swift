@@ -9,9 +9,11 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    var checkerDelegate: LogInViewControllerCheckerDelegate?
+    
     lazy var loginView: LoginView = {
         loginView = LoginView()
-        loginView.delegate = self
+        loginView.checkerDelegate = checkerDelegate
         view.addSubview(loginView)
         
         return loginView
@@ -23,6 +25,7 @@ class LogInViewController: UIViewController {
         
         setupLayoutLoginView()
         registerForKeyboardNotification()
+        loginView.delegate = self
     }
     
     deinit{
