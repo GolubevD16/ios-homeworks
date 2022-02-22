@@ -12,3 +12,7 @@ protocol LogInViewControllerDelegate {
     
     func tappedButton(sender: UIButton, name: String)
 }
+
+protocol LogInViewControllerCheckerDelegate: AnyObject {
+    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String) -> Bool
+}

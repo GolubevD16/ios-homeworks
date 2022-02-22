@@ -72,10 +72,10 @@ extension LogInViewController: LogInViewControllerDelegate {
             currentUser = TestUserService()
 #else
            let user = User(
-            fullName: name,
-            avatar: "belka",
-            status: "Waiting for something..."
-           )
+                        fullName: name,
+                        avatar: "belka",
+                        status: "Waiting for something..."
+                        )
            currentUser = CurrentUserService(user: user)
 #endif
         let profileVc = ProfileViewController(userService: currentUser, name: name)
