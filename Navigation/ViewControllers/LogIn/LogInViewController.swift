@@ -9,9 +9,11 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    var checkerDelegate: LogInViewControllerCheckerDelegate?
+    
     lazy var loginView: LoginView = {
         loginView = LoginView()
-        loginView.delegate = self
+        loginView.checkerDelegate = checkerDelegate
         view.addSubview(loginView)
         
         return loginView
@@ -23,6 +25,7 @@ class LogInViewController: UIViewController {
         
         setupLayoutLoginView()
         registerForKeyboardNotification()
+        loginView.delegate = self
     }
     
     deinit{
@@ -66,8 +69,19 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController: LogInViewControllerDelegate {
     
-    func tappedButton(sender: UIButton) {
-        let profileVc = ProfileViewController()
+    func tappedButton(sender: UIButton, name: String) {
+        var currentUser: UserService
+#if DEBUG
+            currentUser = TestUserService()
+#else
+           let user = User(
+                        fullName: name,
+                        avatar: "belka",
+                        status: "Waiting for something..."
+                        )
+           currentUser = CurrentUserService(user: user)
+#endif
+        let profileVc = ProfileViewController(userService: currentUser, name: name)
         navigationController?.pushViewController(profileVc, animated: true)
     }
 }

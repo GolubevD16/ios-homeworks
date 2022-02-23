@@ -9,6 +9,7 @@ import UIKit
 
 class LoginView: UIView {
     var delegate: LogInViewControllerDelegate?
+    weak var checkerDelegate: LogInViewControllerCheckerDelegate?
     
     let stackView = UIStackView()
     let emailTextField = UITextField()
@@ -138,8 +139,10 @@ class LoginView: UIView {
     @objc func tappedButton(sender: UIButton) {
         guard let emailText = emailTextField.text else { return }
         guard let passwordText = passwordTextField.text else { return }
-        if !emailText.isEmpty && !passwordText.isEmpty {
-            delegate?.tappedButton(sender: sender)
+        guard let isAvaiability = checkerDelegate?.checkLoginPasswordAvailability(inputLogin: emailText,                                                                                                      inputPassword: passwordText)
+        else {return}
+        if !emailText.isEmpty && !passwordText.isEmpty &&  isAvaiability{
+            delegate?.tappedButton(sender: sender, name: emailTextField.text ?? "")
         } else {
             animateButton()
         }

@@ -13,10 +13,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let factory = MyLoginFactory()
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         window?.rootViewController = TabBar()
         window?.makeKeyAndVisible()
+        
+        if let tabController = window?.rootViewController as? UITabBarController,
+           let loginNavigation = tabController.viewControllers?.last as? UINavigationController,
+           let loginController = loginNavigation.viewControllers.first as? LogInViewController {
+            loginController.checkerDelegate = factory.makeInspector()
+        }
     }
     
     
