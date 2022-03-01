@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PhotosViewController: UIViewController {
     
-    private let photos = PhotosData.getPhotos()
+    private var images: [UIImage] = PhotosData.getPhotos()
+    private var photos: [UIImage] = []
+    let facade = ImagePublisherFacade()
+        
+    deinit {
+        facade.removeSubscription(for: self)
+        facade.rechargeImageLibrary()
+    }
     
     lazy var collectionView: UICollectionView = {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -33,11 +41,14 @@ class PhotosViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        configureFacade()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.facade.removeSubscription(for: self)
+        facade.rechargeImageLibrary()
     }
     
     private func setupLayout(){
@@ -47,6 +58,12 @@ class PhotosViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    
+    private func configureFacade(){
+        receive(images: PhotosData.getPhotosMedia())
+        self.facade.subscribe(self)
+        self.facade.addImagesWithTimer(time: 1, repeat: 10, userImages: images)
     }
 }
 
@@ -60,8 +77,8 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .colId, for: indexPath) as? CollectionViewCell else {
             fatalError()
         }
-        let photoName = photos[indexPath.row]
-        cell.addPhoto(photoName: photoName)
+        let img = photos[indexPath.row]
+        cell.addPhoto(image: img)
         return cell
     }
     
@@ -89,6 +106,17 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }
+
+
+extension PhotosViewController: ImageLibrarySubscriber{
+    func receive(images: [UIImage]) {
+        images.forEach{
+            photos.append($0)
+        }
+        collectionView.reloadData()
+    }
+}
+
 
 extension String {
     static var colId = "photoCollectionViewCellReuseID"

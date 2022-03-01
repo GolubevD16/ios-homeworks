@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 protocol LogInViewControllerDelegate {
-    
-    func tappedButton(sender: UIButton)
+    func tappedButton(sender: UIButton, name: String)
+}
+
+protocol LogInViewControllerCheckerDelegate: AnyObject {
+    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String) -> Bool
 }
