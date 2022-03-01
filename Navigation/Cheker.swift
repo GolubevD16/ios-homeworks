@@ -9,8 +9,8 @@ import Foundation
 
 final class Cheker{
     static let shared = Cheker()
-    private let login = "Vasily"
-    private let pswd = "StrongPassword"
+    private let login = "Dima"
+    private let pswd = "123"
     
     private init() {}
     
