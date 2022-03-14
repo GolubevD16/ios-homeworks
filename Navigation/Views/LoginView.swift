@@ -9,6 +9,7 @@ import UIKit
 
 class LoginView: UIView {
     var delegate: LogInViewControllerDelegate?
+    weak var checkerDelegate: LogInViewControllerCheckerDelegate?
     
     let stackView = UIStackView()
     let emailTextField = UITextField()
@@ -28,11 +29,11 @@ class LoginView: UIView {
         return logoView
     }()
     
-    lazy var logInButton: UIButton = {
+    lazy var logInButton: CustomButton = {
         let color: UIImage? = UIImage(named: "blue_pixel")
-        logInButton = UIButton()
-        logInButton.setTitle("Log in", for: .normal)
-        logInButton.setTitleColor(.white, for: .normal)
+        logInButton = CustomButton(title: "Log in", titleColor: .white, onTap: { [weak self] in
+            self?.tappedButton(sender: self?.logInButton ?? UIButton())
+        })
         logInButton.setBackgroundImage(color?.image(alpha: 1), for: .normal)
         logInButton.setBackgroundImage(color?.image(alpha: 0.8), for: [.selected, .highlighted, .disabled])
         
@@ -40,7 +41,6 @@ class LoginView: UIView {
         logInButton.layer.masksToBounds = true
         logInButton.toAutoLayout()
         
-        logInButton.addTarget(self, action: #selector(tappedButton(sender:)), for: .touchUpInside)
         
         return logInButton
     }()
@@ -135,11 +135,13 @@ class LoginView: UIView {
         stackView.addArrangedSubview(passwordTextField)
     }
     
-    @objc func tappedButton(sender: UIButton) {
+    func tappedButton(sender: UIButton) {
         guard let emailText = emailTextField.text else { return }
         guard let passwordText = passwordTextField.text else { return }
-        if !emailText.isEmpty && !passwordText.isEmpty {
-            delegate?.tappedButton(sender: sender)
+        guard let isAvaiability = checkerDelegate?.checkLoginPasswordAvailability(inputLogin: emailText,                                                                                                      inputPassword: passwordText)
+        else {return}
+        if !emailText.isEmpty && !passwordText.isEmpty &&  isAvaiability{
+            delegate?.tappedButton(sender: sender, name: emailTextField.text ?? "")
         } else {
             animateButton()
         }

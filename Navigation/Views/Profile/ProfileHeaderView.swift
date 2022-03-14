@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileHeaderView: UIView {
     
@@ -67,10 +68,11 @@ class ProfileHeaderView: UIView {
         return statusView
     }()
     
-    lazy var showStatusButton: UIButton = {
-        showStatusButton = UIButton()
-        showStatusButton.setTitleColor(.white, for: .normal)
-        showStatusButton.setTitle("Set status", for: .normal)
+    lazy var showStatusButton: CustomButton = {
+        showStatusButton = CustomButton(title: "Set status", titleColor: .white, onTap: {[weak self] in
+                                                                                            self?.buttonPressed()})
+//        showStatusButton.setTitleColor(.white, for: .normal)
+//        showStatusButton.setTitle("Set status", for: .normal)
         showStatusButton.backgroundColor = .blue
         
         showStatusButton.layer.cornerRadius = Constants.showStatusButtonCornerRadius
@@ -79,7 +81,7 @@ class ProfileHeaderView: UIView {
         showStatusButton.layer.shadowOpacity = Constants.showStatusShadowOpacity
         showStatusButton.layer.shadowRadius = Constants.showStatusShadowRadius
         
-        showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//        showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         return showStatusButton
     }()
@@ -123,33 +125,40 @@ class ProfileHeaderView: UIView {
     
     private func setupLayout() {
         let navBarHeight = CGFloat(self.safeAreaInsets.top)
-        NSLayoutConstraint.activate([
-            avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.rightIndentAvatarView),
-            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.topIndentAvatarView + navBarHeight),
-            avatarImageView.heightAnchor.constraint(equalToConstant: self.frame.width/3),
-            avatarImageView.widthAnchor.constraint(equalToConstant: self.frame.width/3),
-            
-            fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.rightIndentLabelView + navBarHeight),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20),
-            
-            statusView.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor),
-            statusView.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 40),
-            
-            showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.rightIndentLabelView),
-            showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.rightIndentLabelView),
-            showStatusButton.heightAnchor.constraint(equalToConstant: Constants.showStatusButtonHeight),
-            showStatusButton.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: Constants.topIndentshowStatusButton),
-            
-            textField.leadingAnchor.constraint(equalTo: statusView.leadingAnchor, constant: -10),
-            textField.trailingAnchor.constraint(equalTo: showStatusButton.trailingAnchor),
-            textField.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -5),
-            textField.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight),
-        ])
+        avatarImageView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview().inset(Constants.rightIndentAvatarView)
+            maker.top.equalToSuperview().inset(Constants.topIndentAvatarView + navBarHeight)
+            maker.height.equalTo(self.frame.width/3)
+            maker.width.equalTo(self.frame.width/3)
+        }
+        
+        fullNameLabel.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().inset(Constants.rightIndentLabelView + navBarHeight)
+            maker.leading.equalTo(avatarImageView.snp.trailing).offset(20)
+        }
+        
+        statusView.snp.makeConstraints { maker in
+            maker.leading.equalTo(fullNameLabel)
+            maker.top.equalTo(fullNameLabel.snp.bottom).offset(40)
+        }
+        
+        showStatusButton.snp.makeConstraints { maker in
+            maker.trailing.equalToSuperview().inset(Constants.rightIndentLabelView)
+            maker.leading.equalToSuperview().inset(Constants.rightIndentLabelView)
+            maker.height.equalTo(Constants.showStatusButtonHeight)
+            maker.top.equalTo(statusView.snp.bottom).offset(Constants.topIndentshowStatusButton)
+        }
+        
+        textField.snp.makeConstraints { maker in
+            maker.leading.equalTo(statusView).inset(-10)
+            maker.trailing.equalTo(showStatusButton)
+            maker.bottom.equalTo(showStatusButton.snp.top).offset(-5)
+            maker.height.equalTo(Constants.textFieldHeight)
+        }
     }
     
     private func setupImage() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        avatarImageView.image = UIImage(named: Constants.avatarImageName)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
         avatarImageView.layer.borderWidth = Constants.avatarImageBorderWidth
@@ -159,7 +168,7 @@ class ProfileHeaderView: UIView {
     
     private func setupNick() {
         fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        fullNameLabel.text = "Hipster Cat"
+        //fullNameLabel.text = "Hipster Cat"
         self.addSubview(fullNameLabel)
     }
     
@@ -182,7 +191,13 @@ class ProfileHeaderView: UIView {
         self.addSubview(textField)
     }
     
-    @objc func buttonPressed() {
+    func initWithUser(user: User){
+        fullNameLabel.text = user.fullName
+        statusView.text = user.status
+        avatarImageView.image = UIImage(named: user.avatar)
+    }
+    
+    func buttonPressed() {
         guard !statusText.isEmpty else {
             UIView.animate(withDuration: 0.5) {
                 [weak self] in
