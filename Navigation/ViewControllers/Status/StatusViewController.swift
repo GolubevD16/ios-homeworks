@@ -7,28 +7,23 @@
 
 import UIKit
 
-class StatusViewController: UIViewController {
+protocol ShowAlert{
+    func showAlert() -> ()
+}
 
-    var statusView: StatusView!
+class StatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue
-    }
-    
-    override func loadView() {
-        super.loadView()
-        setupStatus()
-    }
-    
-    private func setupStatus() {
-        statusView = StatusView(frame: CGRect(x: 0, y: 30, width: view.frame.size.width, height: view.frame.size.height - 30))
-        statusView.alertButton.addTarget(self, action: #selector(clickAlertAction(_:)), for: .touchUpInside)
+        let statusView = StatusView(frame: CGRect(x: 0, y: 30, width: view.frame.size.width, height: view.frame.size.height - 30))
+        statusView.delegate = self
         view.addSubview(statusView)
     }
+}
 
-    
-    @objc func clickAlertAction(_ sender: Any) {
+extension StatusViewController: ShowAlert{
+    func showAlert() {
         let alert = UIAlertController(title: "Вы нажали большую красную кнопку 0_о", message: "Хотите узнать, что будет дальше?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { alert -> Void in
             print("Бум")

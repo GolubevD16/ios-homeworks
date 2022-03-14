@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol NextVC{
+    func nextVC() -> ()
+    func checkWord(word: String) -> ()
+}
+
 class FeedViewController: UIViewController {
     var feedView: FeedView!
+    var model: Model?
     
     private enum Constains {
         static let postTitle: String = "Текст поста"
@@ -17,6 +23,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         feedView = FeedView(frame: self.view.frame)
+        feedView.delegate = self
         setupFeed()
         setupLayoutFeedView()
     }
@@ -36,12 +43,17 @@ class FeedViewController: UIViewController {
     }
     
     private func setupFeed() {
-        feedView.firstButton.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
-        feedView.secondButton.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
         view.addSubview(feedView)
     }
+}
+
+extension FeedViewController: NextVC{
+    func checkWord(word: String) {
+        model = Model()
+        model?.check(word: word)
+    }
     
-    @objc func clickButton(_ sender: Any) {
+    func nextVC() {
         let postVC: PostViewController = PostViewController()
         postVC.setupTitle(Constains.postTitle)
         navigationController?.pushViewController(postVC, animated: true)

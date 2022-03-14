@@ -68,10 +68,11 @@ class ProfileHeaderView: UIView {
         return statusView
     }()
     
-    lazy var showStatusButton: UIButton = {
-        showStatusButton = UIButton()
-        showStatusButton.setTitleColor(.white, for: .normal)
-        showStatusButton.setTitle("Set status", for: .normal)
+    lazy var showStatusButton: CustomButton = {
+        showStatusButton = CustomButton(title: "Set status", titleColor: .white, onTap: {[weak self] in
+                                                                                            self?.buttonPressed()})
+//        showStatusButton.setTitleColor(.white, for: .normal)
+//        showStatusButton.setTitle("Set status", for: .normal)
         showStatusButton.backgroundColor = .blue
         
         showStatusButton.layer.cornerRadius = Constants.showStatusButtonCornerRadius
@@ -80,7 +81,7 @@ class ProfileHeaderView: UIView {
         showStatusButton.layer.shadowOpacity = Constants.showStatusShadowOpacity
         showStatusButton.layer.shadowRadius = Constants.showStatusShadowRadius
         
-        showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//        showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         return showStatusButton
     }()
@@ -196,7 +197,7 @@ class ProfileHeaderView: UIView {
         avatarImageView.image = UIImage(named: user.avatar)
     }
     
-    @objc func buttonPressed() {
+    func buttonPressed() {
         guard !statusText.isEmpty else {
             UIView.animate(withDuration: 0.5) {
                 [weak self] in
