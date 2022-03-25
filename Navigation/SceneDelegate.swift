@@ -10,14 +10,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    private var appCoordinator: TabBarCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let factory = MyLoginFactory()
         guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        window?.rootViewController = TabBar()
-        window?.makeKeyAndVisible()
+        appCoordinator = TabBarCoordinator(scene: scene)
+        appCoordinator?.start()
+        window = appCoordinator?.window
         
         if let tabController = window?.rootViewController as? UITabBarController,
            let loginNavigation = tabController.viewControllers?.last as? UINavigationController,

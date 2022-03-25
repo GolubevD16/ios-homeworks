@@ -15,6 +15,7 @@ protocol NextVC{
 class FeedViewController: UIViewController {
     var feedView: FeedView!
     var model: Model?
+    var buttonPressed: (() -> Void)?
     
     private enum Constains {
         static let postTitle: String = "Текст поста"
@@ -54,8 +55,6 @@ extension FeedViewController: NextVC{
     }
     
     func nextVC() {
-        let postVC: PostViewController = PostViewController()
-        postVC.setupTitle(Constains.postTitle)
-        navigationController?.pushViewController(postVC, animated: true)
+        buttonPressed?()
     }
 }

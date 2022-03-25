@@ -10,6 +10,7 @@ import UIKit
 class LogInViewController: UIViewController {
     
     var checkerDelegate: LogInViewControllerCheckerDelegate?
+    var buttonPressed: ((UserService, String) -> Void)?
     
     lazy var loginView: LoginView = {
         loginView = LoginView()
@@ -81,7 +82,6 @@ extension LogInViewController: LogInViewControllerDelegate {
                         )
            currentUser = CurrentUserService(user: user)
 #endif
-        let profileVc = ProfileViewController(userService: currentUser, name: name)
-        navigationController?.pushViewController(profileVc, animated: true)
+        buttonPressed?(currentUser, name)
     }
 }

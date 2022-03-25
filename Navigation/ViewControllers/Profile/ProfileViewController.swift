@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     private let posts = PostData.getPosts()
     var userService: UserService
     var name: String
+    var photosTapped: (() -> Void)?
     
     init(userService: UserService, name:String){
         self.userService = userService
@@ -299,8 +300,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let photoVc = PhotosViewController()
-            self.navigationController?.pushViewController(photoVc, animated: true)
+            photosTapped?()
         }
     }
 }
