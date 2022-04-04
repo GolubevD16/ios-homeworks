@@ -8,7 +8,7 @@
 import Foundation
 import StorageService
 
-class PostData {
+class PostModel {
     
     static func getPosts() -> [Post] {
         let posts = [

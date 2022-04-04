@@ -11,12 +11,14 @@ import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
-    private let posts = PostData.getPosts()
+    //private let posts = PostData.getPosts()
     var userService: UserService
     var name: String
     var photosTapped: (() -> Void)?
+    var viewModel: ProfileViewModel
     
-    init(userService: UserService, name:String){
+    init(viewModel: ProfileViewModel, userService: UserService, name:String){
+        self.viewModel = viewModel
         self.userService = userService
         self.name = name
         super.init(nibName: nil, bundle: nil)
@@ -80,6 +82,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        setupViewModel()
+        viewModel.send(.viewIsReady)
         #if DEBUG
         self.view.backgroundColor = .red
         #endif
@@ -111,6 +115,26 @@ class ProfileViewController: UIViewController {
         avatarImageView.isUserInteractionEnabled = true
         self.profileHeaderView.avatarImageView.addGestureRecognizer(gestureOpen)
         self.closeButton.addGestureRecognizer(gestureClose)
+    }
+    
+    private func setupViewModel(){
+        viewModel.onStateChanged = { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .loaded:
+                self.showContent()
+                self.tableView.reloadData()
+            case .gallaryTapped:
+                self.photosTapped?()
+            default: break
+            }
+        }
+    }
+    
+    private func showContent() {
+        UIView.animate(withDuration: 0.25) {
+            self.tableView.alpha = 1
+        }
     }
     
     private func configureProfileHeaderView() {
@@ -253,7 +277,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 1
         case 1:
-            return posts.count
+            return viewModel.posts.count
         default:
             return 0
         }
@@ -271,7 +295,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .PostTableId, for: indexPath) as? TableViewCell else { fatalError() }
-            let post: Post = posts[indexPath.row]
+            let post: Post = viewModel.posts[indexPath.row]
             cell.autor.text = post.author
             let imageProcessor = ImageProcessor()
             
@@ -300,7 +324,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            photosTapped?()
+            viewModel.send(.showGallery)
         }
     }
 }

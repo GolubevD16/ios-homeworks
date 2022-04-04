@@ -8,6 +8,8 @@
 import UIKit
 
 class PostViewController: UIViewController {
+    
+    var statusTapped: ((_ vc: PostViewController) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,6 @@ class PostViewController: UIViewController {
     }
     
     @objc func goToInfo(sender: UIBarButtonItem) {
-        let infoVc: StatusViewController = StatusViewController()
-        present(infoVc, animated: true, completion: nil)
+        self.statusTapped?(self)
     }
 }

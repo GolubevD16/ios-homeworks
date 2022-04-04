@@ -46,8 +46,8 @@ class BaseCoordinator {
 final class TabBarCoordinator: BaseCoordinator, Coordinator{
     var window: UIWindow?
     private let scene: UIWindowScene
-    private let FeedNavController = UINavigationController(rootViewController: FeedViewController())
-    private let LoginNavController = UINavigationController(rootViewController: LogInViewController())
+    private let FeedNavController = UINavigationController(rootViewController: ModuleFactory.buildFeed())
+    private let LoginNavController = UINavigationController(rootViewController: ModuleFactory.buildLogin())
     private let tabBar = TabBar()
     
     init(scene: UIWindowScene){
@@ -129,12 +129,38 @@ final class PostCoordinator: FinishingCoordinator{
     
     func start() {
         initWindow()
+        let postVC = navController?.viewControllers.last as? PostViewController
+        postVC?.statusTapped = showStatus(postVC:)
     }
     
-    func initWindow(){
-        let postVC: PostViewController = PostViewController()
-        postVC.setupTitle("Текст поста")
+    private func initWindow(){
+        let postVC = ModuleFactory.buildPost()
         navController?.pushViewController(postVC, animated: true)
+    }
+    
+    private func showStatus(postVC: PostViewController?){
+        guard let postVC = postVC else {return}
+        let coordinator = StatusCoordinator(postVC)
+        coordinator.start()
+    }
+}
+
+// MARK: StatusCoordinator
+final class StatusCoordinator: FinishingCoordinator{
+    var onfinish: (() -> Void)?
+    let vc: PostViewController
+    
+    init(_ vc: PostViewController){
+        self.vc = vc
+    }
+    
+    func start() {
+        initWindow()
+    }
+    
+    private func initWindow(){
+        let statusVC = ModuleFactory.buildStatus()
+        vc.present(statusVC, animated: true, completion: nil)
     }
     
 }
@@ -161,7 +187,7 @@ final class ProfileCoordinator: FinishingCoordinator{
     }
     
     private func initWindow(){
-        let profileVc = ProfileViewController(userService: currentUser, name: name)
+        let profileVc = ModuleFactory.buildProfile(photosTapped: self.showPhotos, userService: currentUser, name: name)
         navController?.pushViewController(profileVc, animated: true)
     }
     
@@ -186,7 +212,7 @@ final class PhotosCoordinator: FinishingCoordinator{
     }
     
     private func initWindow(){
-        let photoVc = PhotosViewController()
+        let photoVc = ModuleFactory.buildPhotos()
         navController?.pushViewController(photoVc, animated: true)
     }
 }

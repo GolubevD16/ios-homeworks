@@ -65,17 +65,11 @@ class FeedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        NotificationCenter.default.addObserver(self, selector: #selector(checkPassword), name: .checkPassword, object: nil)
-    }
-    
-    deinit{
-        NotificationCenter.default.removeObserver(self)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setupStack()
-        
         setupLayout()
     }
     
@@ -104,24 +98,17 @@ class FeedView: UIView {
         stack.addArrangedSubview(btn)
     }
     
-    @objc func checkPassword(notification: Notification){
-        guard let isCorrect = notification.object as? Bool else { return }
-        isCorrect ? animateGreen() : animateRed()
-    }
-    
-    private func animateRed() {
-            UIView.animate(withDuration: 0.5) {
-                [weak self] in
-                self?.checkLabel.textColor = .red
-                self?.checkLabel.text = "Uncorrect"
-                self?.checkLabel.textAlignment = .center
-                self?.layoutIfNeeded()
+    func animateRed() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.checkLabel.textColor = .red
+            self?.checkLabel.text = "Uncorrect"
+            self?.checkLabel.textAlignment = .center
+            self?.layoutIfNeeded()
         }
     }
         
-    private func animateGreen() {
-        UIView.animate(withDuration: 0.5) {
-            [weak self] in
+    func animateGreen() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
             self?.checkLabel.textColor = .green
             self?.checkLabel.text = "Correct"
             self?.checkLabel.textAlignment = .center
