@@ -25,6 +25,7 @@
 		0A77AD2C27F48E1600DD058C /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD2B27F48E1600DD058C /* ModuleFactory.swift */; };
 		0A77AD2E27F48E9D00DD058C /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD2D27F48E9D00DD058C /* FeedPresenter.swift */; };
 		0A77AD3927FA6F3D00DD058C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD3827FA6F3D00DD058C /* ProfileViewModel.swift */; };
+		0A77AD3C27FDC11500DD058C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD3B27FDC11500DD058C /* Photo.swift */; };
 		0A844A1F2744872C00C2DB82 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A1E2744872C00C2DB82 /* PhotoTableViewCell.swift */; };
 		0A844A232745207600C2DB82 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A222745207600C2DB82 /* PhotosViewController.swift */; };
 		0A844A25274529A100C2DB82 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A24274529A100C2DB82 /* CollectionViewCell.swift */; };
@@ -114,6 +115,7 @@
 		0A77AD2B27F48E1600DD058C /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		0A77AD2D27F48E9D00DD058C /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		0A77AD3827FA6F3D00DD058C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		0A77AD3B27FDC11500DD058C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0A844A1E2744872C00C2DB82 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		0A844A222745207600C2DB82 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		0A844A24274529A100C2DB82 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -223,7 +225,6 @@
 				0A9D1152271B8347003E8C14 /* FeedViewController.swift */,
 				0ADA2A5F271CC8BA00882297 /* FeedView.swift */,
 				0A77AD2D27F48E9D00DD058C /* FeedPresenter.swift */,
-				0AB2DE9E27DEBD890031F779 /* Model.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -235,9 +236,6 @@
 				0AFD77EA2718D6F5006F8DBB /* LaunchScreen.storyboard */,
 				0AFD77DF2718D6F3006F8DBB /* AppDelegate.swift */,
 				0AFD77E12718D6F3006F8DBB /* SceneDelegate.swift */,
-				0A970BEE27BDA25A00F5B6C5 /* UserService.swift */,
-				0AB2DE9C27DD4C880031F779 /* Custom Button.swift */,
-				0A970BEC27BD9EAF00F5B6C5 /* User.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -252,6 +250,19 @@
 				0A77AD3827FA6F3D00DD058C /* ProfileViewModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		0A77AD3A27FDBFCD00DD058C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A970BEC27BD9EAF00F5B6C5 /* User.swift */,
+				0AB2DE9E27DEBD890031F779 /* Model.swift */,
+				0AE04EA5273B4BF8006F11BD /* PostModel.swift */,
+				0A970BEE27BDA25A00F5B6C5 /* UserService.swift */,
+				0AB2DE9C27DD4C880031F779 /* Custom Button.swift */,
+				0A77AD3B27FDC11500DD058C /* Photo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0A844A212745205900C2DB82 /* Photos */ = {
@@ -301,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				0A925FD4271CA4B500ADEC52 /* PostViewController.swift */,
-				0AE04EA5273B4BF8006F11BD /* PostModel.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -341,6 +351,7 @@
 		0AFD77DE2718D6F3006F8DBB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				0A77AD3A27FDBFCD00DD058C /* Model */,
 				0A77AD3427FA6BDB00DD058C /* Common */,
 				0AE04EA0273B4AB4006F11BD /* extensions */,
 				0A77AD2927F48CD500DD058C /* Modules */,
@@ -643,6 +654,7 @@
 				0A844A25274529A100C2DB82 /* CollectionViewCell.swift in Sources */,
 				0A26747B273605E50094D00E /* LoginView.swift in Sources */,
 				0AE04EA6273B4BF8006F11BD /* PostModel.swift in Sources */,
+				0A77AD3C27FDC11500DD058C /* Photo.swift in Sources */,
 				0A45CEF5271CCF7B00D61300 /* StatusViewController.swift in Sources */,
 				0AB2DE9F27DEBD890031F779 /* Model.swift in Sources */,
 				0A970C0827C5A88900F5B6C5 /* LoginFactory.swift in Sources */,

@@ -47,7 +47,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
     var window: UIWindow?
     private let scene: UIWindowScene
     private let FeedNavController = UINavigationController(rootViewController: ModuleFactory.buildFeed())
-    private let LoginNavController = UINavigationController(rootViewController: ModuleFactory.buildLogin())
+    private let LoginNavController = UINavigationController(rootViewController: ModuleFactory.buildPhotos())
     private let tabBar = TabBar()
     
     init(scene: UIWindowScene){

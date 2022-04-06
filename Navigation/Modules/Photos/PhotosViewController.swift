@@ -10,17 +10,17 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController {
     
-    private var images: [UIImage] = PhotosData.getPhotos()
-    private var photos: [UIImage] = []
-    let facade = ImagePublisherFacade()
-        
-    deinit {
-        facade.removeSubscription(for: self)
-        facade.rechargeImageLibrary()
-    }
+    private let photos = PhotosData.getPhotos()
+    private var images: [UIImage] = []
+    private var userImages: [UIImage] = []
+    private let imagePublisherFacade = ImagePublisherFacade()
+    private let imageProcessor = ImageProcessor()
+
     
     lazy var collectionView: UICollectionView = {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
         collectionView.toAutoLayout()
         
         return collectionView
@@ -28,30 +28,30 @@ class PhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Photo Gallery"
         setupLayout()
-        
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: .colId)
-        collectionView.dataSource = self
-        collectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initUserImages()
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        configureFacade()
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.facade.removeSubscription(for: self)
-        facade.rechargeImageLibrary()
+        self.imagePublisherFacade.removeSubscription(for: self)
+        imagePublisherFacade.rechargeImageLibrary()
     }
     
     private func setupLayout(){
+        view.addSubview(collectionView)
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: .colId)
+        collectionView.dataSource = self
+        collectionView.delegate = self
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -59,25 +59,20 @@ class PhotosViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-    
-    private func configureFacade(){
-        receive(images: PhotosData.getPhotosMedia())
-        self.facade.subscribe(self)
-        self.facade.addImagesWithTimer(time: 1, repeat: 10, userImages: images)
-    }
 }
 
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .colId, for: indexPath) as? CollectionViewCell else {
             fatalError()
         }
-        let img = photos[indexPath.row]
+        
+        let img = images[indexPath.row]
         cell.addPhoto(image: img)
         return cell
     }
@@ -111,7 +106,7 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
 extension PhotosViewController: ImageLibrarySubscriber{
     func receive(images: [UIImage]) {
         images.forEach{
-            photos.append($0)
+            self.images.append($0)
         }
         collectionView.reloadData()
     }
@@ -120,4 +115,47 @@ extension PhotosViewController: ImageLibrarySubscriber{
 
 extension String {
     static var colId = "photoCollectionViewCellReuseID"
+}
+
+extension PhotosViewController {
+    
+    /// Результаты измерения c фильтром tonal:
+    /// Время выполнения с qos: default = 6812.0 miliseconds
+    /// Время выполнения с qos: background = 57266.0 miliseconds
+    /// Время выполнения с qos: userInitiated = 6048.0 miliseconds
+    /// Время выполнения с qos: utility = 12829.0 miliseconds
+    /// Время выполнения с qos: userInteractive = 5979.0 miliseconds
+    
+    private func initUserImages() {
+        var sourceImages: [UIImage] = photos.compactMap { photo in UIImage(named: photo.name) }
+        PhotosData.getPhotosMedia().forEach {
+            sourceImages.append($0)
+        }
+        
+        let start = DispatchTime.now()
+        imageProcessor.processImagesOnThread(
+            sourceImages: sourceImages,
+            filter: .tonal,
+            qos: .userInteractive,
+            completion: { cgImages in
+                self.userImages = cgImages.compactMap({ cgImage in
+                    guard let cgImage = cgImage else { fatalError("Unable to fetch filter image") }
+                    return UIImage(cgImage: cgImage)
+                })
+                let end = DispatchTime.now()
+                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
+                let elapsedTime = Double(nanoTime / 1_000_000)
+                print("Время выполнения \(elapsedTime) miliseconds")
+                
+                DispatchQueue.main.async {
+                    self.imagePublisherFacade.subscribe(self)
+                    self.imagePublisherFacade.addImagesWithTimer(
+                        time: 0.25,
+                        repeat: 10,
+                        userImages: self.userImages
+                    )
+                }
+            }
+        )
+    }
 }

@@ -11,11 +11,11 @@ import UIKit
 
 class PhotosData {
     
-    static func getPhotos() -> [UIImage] {
-        var images: [UIImage] = []
+    static func getPhotos() -> [Photo] {
+        var images: [Photo] = []
         let photosNameAssets = ["airbus", "bear", "belka", "bird", "car", "dog", "dragon", "ejik", "horse", "kot", "kunica", "liji", "monako", "moscow", "nos", "riba", "sky", "slon", "voda", "vodopad", "cafe"]
         photosNameAssets.forEach{
-            images.append(UIImage(named: $0) ?? UIImage())
+            images.append(Photo(name: $0))
         }
         return images
     }
