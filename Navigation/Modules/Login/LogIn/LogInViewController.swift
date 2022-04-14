@@ -7,14 +7,23 @@
 
 import UIKit
 
+protocol BruteForce{
+    var password: String! {get }
+    func unlockPassword(password: String) -> String
+}
+
 class LogInViewController: UIViewController {
-    
+    /// установка длины пароля
+    let lenthOfGenerationPassword = 8
+    let model = BruteForceModel()
     var checkerDelegate: LogInViewControllerCheckerDelegate?
     var buttonPressed: ((UserService, String) -> Void)?
+    var password: String!
     
     lazy var loginView: LoginView = {
         loginView = LoginView()
         loginView.checkerDelegate = checkerDelegate
+        loginView.bruteForceDelegate = self
         view.addSubview(loginView)
         
         return loginView
@@ -24,6 +33,8 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         
+        generatePassword(lenthOfGenerationPassword)
+        print(password!)
         setupLayoutLoginView()
         registerForKeyboardNotification()
         loginView.delegate = self
@@ -31,6 +42,11 @@ class LogInViewController: UIViewController {
     
     deinit{
         removeForKeyboardNotification()
+    }
+    
+    private func generatePassword(_ lenth: Int){
+        let randomCharacters = (0..<lenth).map{_ in String().printable.randomElement()!}
+        password = String(randomCharacters)
     }
     
     private func setupLayoutLoginView(){
@@ -83,5 +99,11 @@ extension LogInViewController: LogInViewControllerDelegate {
            currentUser = CurrentUserService(user: user)
 #endif
         buttonPressed?(currentUser, name)
+    }
+}
+
+extension LogInViewController: BruteForce{
+    func unlockPassword(password: String)-> String {
+        return model.bruteForce(passwordToUnlock: password)
     }
 }
