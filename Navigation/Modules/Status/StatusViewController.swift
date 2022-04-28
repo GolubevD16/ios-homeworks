@@ -13,13 +13,20 @@ protocol ShowAlert{
 
 class StatusViewController: UIViewController {
     
+    lazy var model = StatusModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue
         let statusView = StatusView(frame: CGRect(x: 0, y: 30, width: view.frame.size.width, height: view.frame.size.height - 30))
+        model.status = statusView
+        model.setTitlePeople()
+        model.setTitlePlanet()
         statusView.delegate = self
         view.addSubview(statusView)
+        //StatusModel.setTitle()
     }
+    
 }
 
 extension StatusViewController: ShowAlert{

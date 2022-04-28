@@ -169,14 +169,12 @@ class LoginView: UIView {
     func tappedButton(sender: UIButton) {
         guard let emailText = emailTextField.text else { return }
         guard let passwordText = passwordTextField.text else { return }
-        guard let isAvaiability = checkerDelegate?.checkLoginPasswordAvailability(inputLogin: emailText,                                                                                inputPassword: passwordText)
-        else
-            {return}
-        if !emailText.isEmpty && !passwordText.isEmpty &&  isAvaiability{
-            delegate?.tappedButton(sender: sender, name: emailTextField.text ?? "")
-        } else {
-            animateButton()
-        }
+        checkerDelegate?.checkLoginPasswordAvailability(inputLogin: emailText, inputPassword: passwordText)
+//        if !emailText.isEmpty && !passwordText.isEmpty &&  isAvaiability{
+//            delegate?.tappedButton(sender: sender, name: emailTextField.text ?? "")
+//        } else {
+//            animateButton()
+//        }
     }
     
     private func tappedBruteForce() {
@@ -199,7 +197,7 @@ class LoginView: UIView {
         }
     }
     
-    private func animateButton() {
+    func animateButton() {
         UIView.animate(withDuration: 0.5) {
             [weak self] in
             self?.logInButton.layer.borderWidth = 2

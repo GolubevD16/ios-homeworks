@@ -8,7 +8,13 @@
 import Foundation
 
 class MyLoginFactory: LoginFactory{
+    let delegate: LogInViewControllerDelegate
+    
+    init(vc: LogInViewControllerDelegate){
+        self.delegate = vc
+    }
+    
     func makeInspector() -> LogInInspector {
-        return LogInInspector()
+        return LogInInspector(vc: delegate)
     }
 }

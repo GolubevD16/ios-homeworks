@@ -59,7 +59,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         initWindow()
         setUpTabBar()
         let loginVC = LoginNavController.viewControllers[0] as? LogInViewController
-        loginVC?.buttonPressed = {[weak self] user, name in
+        loginVC?.buttonPressed = { [weak self] user, name in
             self?.showProfileVC(user: user, name: name)
         }
         
@@ -69,7 +69,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         }
     }
     
-    private func showProfileVC(user: UserService, name: String){
+    private func showProfileVC(user: User, name: String){
         let coordinator = ProfileCoordinator(navController: LoginNavController, currentUser: user, name: name)
         addDependency(coordinator)
         coordinator.start()
@@ -169,11 +169,11 @@ final class StatusCoordinator: FinishingCoordinator{
 // MARK: ProfileCoordinator
 final class ProfileCoordinator: FinishingCoordinator{
     private weak var navController: UINavigationController?
-    private let currentUser: UserService
+    private let currentUser: User
     private let name: String
     var onfinish: (() -> Void)?
     
-    init(navController: UINavigationController, currentUser: UserService, name: String){
+    init(navController: UINavigationController, currentUser: User, name: String){
         self.navController = navController
         self.currentUser = currentUser
         self.name = name

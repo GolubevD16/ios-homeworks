@@ -8,16 +8,16 @@
 import UIKit
 
 protocol BruteForce{
-    var password: String! {get }
+    var password: String! { get }
     func unlockPassword(password: String) -> String
 }
 
 class LogInViewController: UIViewController {
     /// установка длины пароля
-    let lenthOfGenerationPassword = 8
+    let lenthOfGenerationPassword = 3
     let model = BruteForceModel()
     var checkerDelegate: LogInViewControllerCheckerDelegate?
-    var buttonPressed: ((UserService, String) -> Void)?
+    var buttonPressed: ((User, String) -> Void)?
     var password: String!
     
     lazy var loginView: LoginView = {
@@ -69,6 +69,13 @@ class LogInViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    private func makeAlert(mess: String){
+        let alert = UIAlertController(title: "Внимание", message: mess, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+    
     @objc func keyboardWillShow(notification: Notification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         let scrolSize = self.loginView.logInButton.frame.maxY + keyboardSize.height - self.view.bounds.maxY + 8 + self.view.safeAreaInsets.top
@@ -85,20 +92,52 @@ class LogInViewController: UIViewController {
 }
 
 extension LogInViewController: LogInViewControllerDelegate {
+    func registr() {
+        let currentUser = User(fullName: "не указано", avatar: "belka", status: "установите статус")
+        buttonPressed?(currentUser, "не указано")
+        makeAlert(mess: "Зарегистрирован новый пользователь")
+    }
+    
+    func notAllField() {
+        loginView.animateButton()
+        makeAlert(mess: "Заполните все поля")
+    }
+    
+    func weakPass() {
+        loginView.animateButton()
+        makeAlert(mess: "Пароль должен содержать минимум 6 символов")
+    }
+    
+    func badEmail() {
+        loginView.animateButton()
+        makeAlert(mess: "Введен некоректный Email")
+    }
+    
+    func passFail() {
+        loginView.animateButton()
+        makeAlert(mess: "Введен неверный пароль")
+    }
+    
+    func login() {
+        let currentUser = User(fullName: "не указано", avatar: "belka", status: "установите статус")
+        buttonPressed?(currentUser, "не указано")
+        makeAlert(mess: "Вы успешно авторизировались")
+    }
+    
     
     func tappedButton(sender: UIButton, name: String) {
-        var currentUser: UserService
-#if DEBUG
-            currentUser = TestUserService()
-#else
-           let user = User(
-                        fullName: name,
-                        avatar: "belka",
-                        status: "Waiting for something..."
-                        )
-           currentUser = CurrentUserService(user: user)
-#endif
-        buttonPressed?(currentUser, name)
+//        var currentUser: UserService
+//#if DEBUG
+//            currentUser = TestUserService()
+//#else
+//           let user = User(
+//                        fullName: name,
+//                        avatar: "belka",
+//                        status: "Waiting for something..."
+//                        )
+//           currentUser = CurrentUserService(user: user)
+//#endif
+//        buttonPressed?(currentUser, name)
     }
 }
 

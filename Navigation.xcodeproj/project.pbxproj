@@ -16,6 +16,9 @@
 		0A45CF04271E34EA00D61300 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A45CF03271E34EA00D61300 /* ProfileHeaderView.swift */; };
 		0A6B8C2D280784B300BD2A36 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B8C2C280784B300BD2A36 /* BruteForce.swift */; };
 		0A6B8C2F2807899E00BD2A36 /* string +  extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B8C2E2807899E00BD2A36 /* string +  extension.swift */; };
+		0A6B8C44280B764000BD2A36 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B8C43280B763F00BD2A36 /* NetworkManager.swift */; };
+		0A6B8C7128116F3E00BD2A36 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B8C7028116F3E00BD2A36 /* StatusModel.swift */; };
+		0A6B8C73281A0B2D00BD2A36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6B8C72281A0B2D00BD2A36 /* GoogleService-Info.plist */; };
 		0A6E7E4627A9ED4300089124 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E7E4527A9ED4300089124 /* StorageService.docc */; };
 		0A6E7E4C27A9ED4300089124 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6E7E4227A9ED4300089124 /* StorageService.framework */; };
 		0A6E7E5327A9ED4300089124 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E7E5227A9ED4300089124 /* StorageServiceTests.swift */; };
@@ -110,6 +113,9 @@
 		0A45CF03271E34EA00D61300 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		0A6B8C2C280784B300BD2A36 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		0A6B8C2E2807899E00BD2A36 /* string +  extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "string +  extension.swift"; sourceTree = "<group>"; };
+		0A6B8C43280B763F00BD2A36 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0A6B8C7028116F3E00BD2A36 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
+		0A6B8C72281A0B2D00BD2A36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A6E7E4227A9ED4300089124 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6E7E4427A9ED4300089124 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		0A6E7E4527A9ED4300089124 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 				0A970BEE27BDA25A00F5B6C5 /* UserService.swift */,
 				0AB2DE9C27DD4C880031F779 /* Custom Button.swift */,
 				0A77AD3B27FDC11500DD058C /* Photo.swift */,
+				0A6B8C43280B763F00BD2A36 /* NetworkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +334,7 @@
 			children = (
 				0A45CEF4271CCF7B00D61300 /* StatusViewController.swift */,
 				0A45CEF6271CD0F800D61300 /* StatusView.swift */,
+				0A6B8C7028116F3E00BD2A36 /* StatusModel.swift */,
 			);
 			path = Status;
 			sourceTree = "<group>";
@@ -362,6 +370,7 @@
 				0AE04EA0273B4AB4006F11BD /* extensions */,
 				0A77AD2927F48CD500DD058C /* Modules */,
 				0AFD77ED2718D6F5006F8DBB /* Info.plist */,
+				0A6B8C72281A0B2D00BD2A36 /* GoogleService-Info.plist */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -531,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AFD77EC2718D6F5006F8DBB /* LaunchScreen.storyboard in Resources */,
+				0A6B8C73281A0B2D00BD2A36 /* GoogleService-Info.plist in Resources */,
 				0AFD77E92718D6F5006F8DBB /* Assets.xcassets in Resources */,
 				0AB2DE9B27CEE88E0031F779 /* Media.xcassets in Resources */,
 			);
@@ -646,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A6B8C44280B764000BD2A36 /* NetworkManager.swift in Sources */,
 				0ADA2A60271CC8BA00882297 /* FeedView.swift in Sources */,
 				0A10EFB52736011F007C4CC3 /* UIView-extension.swift in Sources */,
 				0A45CEF7271CD0F800D61300 /* StatusView.swift in Sources */,
@@ -672,6 +683,7 @@
 				0ADA2A62271CC93600882297 /* ProfileViewController.swift in Sources */,
 				0A905DD52739D960008A2FCD /* UIImage-extension.swift in Sources */,
 				0A77AD2C27F48E1600DD058C /* ModuleFactory.swift in Sources */,
+				0A6B8C7128116F3E00BD2A36 /* StatusModel.swift in Sources */,
 				0A77AD2E27F48E9D00DD058C /* FeedPresenter.swift in Sources */,
 				0A844A232745207600C2DB82 /* PhotosViewController.swift in Sources */,
 				0AFD77E22718D6F3006F8DBB /* SceneDelegate.swift in Sources */,

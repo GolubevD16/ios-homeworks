@@ -11,13 +11,12 @@ import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
-    //private let posts = PostData.getPosts()
-    var userService: UserService
+    var userService: User
     var name: String
     var photosTapped: (() -> Void)?
     var viewModel: ProfileViewModel
     
-    init(viewModel: ProfileViewModel, userService: UserService, name:String){
+    init(viewModel: ProfileViewModel, userService: User, name:String){
         self.viewModel = viewModel
         self.userService = userService
         self.name = name
@@ -138,8 +137,8 @@ class ProfileViewController: UIViewController {
     }
     
     private func configureProfileHeaderView() {
-            guard let user = userService.getUser(name: name) else { return }
-            profileHeaderView.initWithUser(user: user)
+            //guard let user = userService.getUser(name: name) else { return }
+        profileHeaderView.initWithUser(user: User(fullName: "не указано", avatar: "belka", status: "установите статус"))
     }
     
     @objc private func hanbleOpenTapGestureRecognizer(gesture: UITapGestureRecognizer){

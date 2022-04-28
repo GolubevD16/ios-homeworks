@@ -10,8 +10,14 @@ import UIKit
 
 protocol LogInViewControllerDelegate {
     func tappedButton(sender: UIButton, name: String)
+    func registr()
+    func notAllField()
+    func badEmail()
+    func passFail()
+    func login()
+    func weakPass()
 }
 
 protocol LogInViewControllerCheckerDelegate: AnyObject {
-    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String) -> Bool
+    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String)
 }

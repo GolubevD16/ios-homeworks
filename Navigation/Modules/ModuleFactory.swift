@@ -34,7 +34,7 @@ struct ModuleFactory {
         return PhotosViewController()
     }
     
-    static func buildProfile(photosTapped: @escaping (() -> Void), userService: UserService, name:String) -> ProfileViewController {
+    static func buildProfile(photosTapped: @escaping (() -> Void), userService: User, name:String) -> ProfileViewController {
         let viewModel = ProfileViewModel()
         viewModel.photosTapped = photosTapped
         

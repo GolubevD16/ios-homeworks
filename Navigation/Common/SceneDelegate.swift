@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let factory = MyLoginFactory()
+        
         guard let scene = (scene as? UIWindowScene) else { return }
         appCoordinator = TabBarCoordinator(scene: scene)
         appCoordinator?.start()
@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let tabController = window?.rootViewController as? UITabBarController,
            let loginNavigation = tabController.viewControllers?.last as? UINavigationController,
            let loginController = loginNavigation.viewControllers.first as? LogInViewController {
-            loginController.checkerDelegate = factory.makeInspector()
+                let factory = MyLoginFactory(vc: loginController)
+                loginController.checkerDelegate = factory.makeInspector()
         }
     }
     
