@@ -19,11 +19,12 @@ import RealmSwift
 }
 
 final class DataProvider{
-    static let realm = try? Realm()
     
     static func addUser(email: String, pas: String){
         let user = UserDB(value: ["email": email, "password": pas, "isAuth": true])
         do {
+            let realm = try? Realm()
+            
             realm?.beginWrite()
             realm?.add(user)
             try realm?.commitWrite()
@@ -33,6 +34,7 @@ final class DataProvider{
     }
     
     static func checkAuth() -> Bool{
+        let realm = try? Realm()
         guard let results = realm?.objects(UserDB.self) else {
             return false
         }

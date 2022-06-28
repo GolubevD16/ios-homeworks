@@ -1730,22 +1730,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "66A54E59-11F9-461A-AE16-DB34BBCAE5A0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Navigation/Modules/Login/LogIn/BDManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "DataProvider"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7FF57540-4FFC-4CDD-831A-0475F043F85D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1753,8 +1737,8 @@
             filePath = "Navigation/Modules/Login/LogIn/BDManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "checkAuth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1769,8 +1753,8 @@
             filePath = "Navigation/Modules/Login/LogIn/BDManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "checkAuth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1785,8 +1769,8 @@
             filePath = "Navigation/Modules/Login/LogIn/BDManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "checkAuth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1897,8 +1881,8 @@
             filePath = "Navigation/Modules/Login/LogIn/BDManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "addUser(email:pas:)"
             landmarkType = "7">
          </BreakpointContent>
