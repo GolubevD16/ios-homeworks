@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     }()
     
     lazy var avatarImageView: UIImageView = {
-        avatarImageView = UIImageView(image: UIImage(named: "hipster cat"))
+        avatarImageView = UIImageView(image: UIImage(named: "belka"))
         avatarImageView.frame = self.avatarImageView.frame
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -293,6 +293,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 1:
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .PostTableId, for: indexPath) as? TableViewCell else { fatalError() }
             let post: Post = viewModel.posts[indexPath.row]
             cell.autor.text = post.author
@@ -314,11 +315,19 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.likesPost.text = "Likes: \(post.likes)"
             cell.viewsPost.text = "Views: \(post.views)"
             cell.selectionStyle = .none
+            let gesture = MyGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+            gesture.post = post
+            gesture.numberOfTapsRequired=2
+            cell.addGestureRecognizer(gesture)
             return cell
             
         default:
             return UITableViewCell()
         }
+    }
+    
+    @objc private func handleDoubleTap(_ sender: MyGestureRecognizer) {
+        CoreDataManager.shared.addPost(post: sender.post ?? Post(author: "1", description: "2", image: "1", likes: 1, views: 1))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

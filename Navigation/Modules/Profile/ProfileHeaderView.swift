@@ -13,7 +13,7 @@ class ProfileHeaderView: UIView {
     private var statusText: String = ""
     
     private enum Constants {
-        static let avatarImageName: String = "hipster cat"
+        static let avatarImageName: String = "belka"
         static let avatarImageBorderWidth: CGFloat = 3.0
         static let avatarImageViewBorderColor: CGColor = UIColor.white.cgColor
         

@@ -22,6 +22,10 @@ struct ModuleFactory {
         return LogInViewController()
     }
     
+    static func buildLikePost() -> LikePostViewController{
+        return LikePostViewController()
+    }
+    
     static func buildPost() -> PostViewController {
         return PostViewController()
     }

@@ -48,6 +48,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
     private let scene: UIWindowScene
     private let FeedNavController = UINavigationController(rootViewController: ModuleFactory.buildFeed())
     private let LoginNavController = UINavigationController(rootViewController: ModuleFactory.buildLogin())
+    private let LikePostNavController = UINavigationController(rootViewController: ModuleFactory.buildLikePost())
     private let tabBar = TabBar()
     
     init(scene: UIWindowScene){
@@ -63,7 +64,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
             self?.showProfileVC(user: user, name: name)
         }
         
-        let feedVC = FeedNavController.viewControllers.last as? FeedViewController
+        let feedVC = FeedNavController.viewControllers[0] as? FeedViewController
         feedVC?.buttonPressed = {[weak self] in
             self?.showFeedVC()
         }
@@ -89,7 +90,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
     
     func setUpTabBar(){
         setUpNavControllers()
-        tabBar.viewControllers = [FeedNavController, LoginNavController]
+        tabBar.viewControllers = [FeedNavController, LoginNavController, LikePostNavController]
     }
     
     private func setUpNavControllers(){
@@ -102,6 +103,11 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         LoginNavController.tabBarItem.image = UIImage(systemName: Constans.profileImageName) ?? UIImage()
         LoginNavController.topViewController?.title = Constans.profileTitle
         updateNavBarAppearance(navController: LoginNavController)
+        
+        LikePostNavController.tabBarItem.title = "liked posts"
+        LikePostNavController.tabBarItem.image = UIImage(systemName: "heart.fill") ?? UIImage()
+        LikePostNavController.topViewController?.title = "Posts"
+        updateNavBarAppearance(navController: LikePostNavController)
     }
     
     @available(iOS 15.0, *)

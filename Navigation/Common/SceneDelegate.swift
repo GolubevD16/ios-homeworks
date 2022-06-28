@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = appCoordinator?.window
         
         if let tabController = window?.rootViewController as? UITabBarController,
-           let loginNavigation = tabController.viewControllers?.last as? UINavigationController,
+           let loginNavigation = tabController.viewControllers?[1] as? UINavigationController,
            let loginController = loginNavigation.viewControllers.first as? LogInViewController {
                 let factory = MyLoginFactory(vc: loginController)
                 loginController.checkerDelegate = factory.makeInspector()

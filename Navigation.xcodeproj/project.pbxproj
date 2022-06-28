@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0A10EFB52736011F007C4CC3 /* UIView-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A10EFB42736011F007C4CC3 /* UIView-extension.swift */; };
 		0A1D282928669DBB00FA3F34 /* BDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D282828669DBB00FA3F34 /* BDManager.swift */; };
+		0A1D282B286A507100FA3F34 /* LikePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D282A286A507100FA3F34 /* LikePostViewController.swift */; };
+		0A1D282D286A54E600FA3F34 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D282C286A54E600FA3F34 /* CoreDataManager.swift */; };
+		0A1D2830286A55B900FA3F34 /* Post.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D282E286A55B900FA3F34 /* Post.xcdatamodeld */; };
+		0A1D2832286A767600FA3F34 /* MyRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2831286A767600FA3F34 /* MyRecognizer.swift */; };
+		0A1D2833286A775500FA3F34 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A45CEF2271CCB8200D61300 /* Post.swift */; };
 		0A2674792736048D0094D00E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2674782736048D0094D00E /* LogInViewController.swift */; };
 		0A26747B273605E50094D00E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26747A273605E50094D00E /* LoginView.swift */; };
 		0A26747D27360FEE0094D00E /* TextField-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26747C27360FEE0094D00E /* TextField-extension.swift */; };
@@ -26,7 +31,6 @@
 		0A6E7E5427A9ED4300089124 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A6E7E4427A9ED4300089124 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A6E7E5727A9ED4300089124 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6E7E4227A9ED4300089124 /* StorageService.framework */; };
 		0A6E7E5827A9ED4300089124 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6E7E4227A9ED4300089124 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0A6E7E6027A9ED6C00089124 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A45CEF2271CCB8200D61300 /* Post.swift */; };
 		0A77AD2827EBC75E00DD058C /* Coordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD2727EBC75E00DD058C /* Coordinators.swift */; };
 		0A77AD2C27F48E1600DD058C /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD2B27F48E1600DD058C /* ModuleFactory.swift */; };
 		0A77AD2E27F48E9D00DD058C /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77AD2D27F48E9D00DD058C /* FeedPresenter.swift */; };
@@ -102,6 +106,10 @@
 /* Begin PBXFileReference section */
 		0A10EFB42736011F007C4CC3 /* UIView-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-extension.swift"; sourceTree = "<group>"; };
 		0A1D282828669DBB00FA3F34 /* BDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDManager.swift; sourceTree = "<group>"; };
+		0A1D282A286A507100FA3F34 /* LikePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostViewController.swift; sourceTree = "<group>"; };
+		0A1D282C286A54E600FA3F34 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		0A1D282F286A55B900FA3F34 /* Post.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Post.xcdatamodel; sourceTree = "<group>"; };
+		0A1D2831286A767600FA3F34 /* MyRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecognizer.swift; sourceTree = "<group>"; };
 		0A2674782736048D0094D00E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0A26747A273605E50094D00E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0A26747C27360FEE0094D00E /* TextField-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField-extension.swift"; sourceTree = "<group>"; };
@@ -185,7 +193,6 @@
 		0A6E7E4327A9ED4300089124 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
-				0A45CEF2271CCB8200D61300 /* Post.swift */,
 				0A6E7E4427A9ED4300089124 /* StorageService.h */,
 				0A6E7E4527A9ED4300089124 /* StorageService.docc */,
 			);
@@ -212,6 +219,9 @@
 				0AE04EA1273B4ADB006F11BD /* Post */,
 				0A844A212745205900C2DB82 /* Photos */,
 				0A77AD2A27F48CE600DD058C /* Feed */,
+				0A1D282A286A507100FA3F34 /* LikePostViewController.swift */,
+				0A1D282C286A54E600FA3F34 /* CoreDataManager.swift */,
+				0A1D282E286A55B900FA3F34 /* Post.xcdatamodeld */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -245,6 +255,7 @@
 				0A844A1E2744872C00C2DB82 /* PhotoTableViewCell.swift */,
 				0ADA2A61271CC93600882297 /* ProfileViewController.swift */,
 				0A77AD3827FA6F3D00DD058C /* ProfileViewModel.swift */,
+				0A1D2831286A767600FA3F34 /* MyRecognizer.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -252,6 +263,7 @@
 		0A77AD3A27FDBFCD00DD058C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0A45CEF2271CCB8200D61300 /* Post.swift */,
 				0A970BEC27BD9EAF00F5B6C5 /* User.swift */,
 				0AB2DE9E27DEBD890031F779 /* Model.swift */,
 				0AE04EA5273B4BF8006F11BD /* PostModel.swift */,
@@ -521,7 +533,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A6E7E4627A9ED4300089124 /* StorageService.docc in Sources */,
-				0A6E7E6027A9ED6C00089124 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +560,9 @@
 				0A9D1153271B8347003E8C14 /* FeedViewController.swift in Sources */,
 				0A844A1F2744872C00C2DB82 /* PhotoTableViewCell.swift in Sources */,
 				0A1D282928669DBB00FA3F34 /* BDManager.swift in Sources */,
+				0A1D282D286A54E600FA3F34 /* CoreDataManager.swift in Sources */,
 				0A2674792736048D0094D00E /* LogInViewController.swift in Sources */,
+				0A1D282B286A507100FA3F34 /* LikePostViewController.swift in Sources */,
 				0A844A25274529A100C2DB82 /* CollectionViewCell.swift in Sources */,
 				0A26747B273605E50094D00E /* LoginView.swift in Sources */,
 				0AE04EA6273B4BF8006F11BD /* PostModel.swift in Sources */,
@@ -559,6 +572,7 @@
 				0A970C0827C5A88900F5B6C5 /* LoginFactory.swift in Sources */,
 				0A26747D27360FEE0094D00E /* TextField-extension.swift in Sources */,
 				0A970C0627C58EF800F5B6C5 /* LogInInspector.swift in Sources */,
+				0A1D2833286A775500FA3F34 /* Post.swift in Sources */,
 				0A925FD5271CA4B500ADEC52 /* PostViewController.swift in Sources */,
 				0A970C0A27C5A8CC00F5B6C5 /* MyLoginFactory.swift in Sources */,
 				0A905DD72739EB6F008A2FCD /* LogInViewControllerDelegate.swift in Sources */,
@@ -566,6 +580,7 @@
 				0A905DD52739D960008A2FCD /* UIImage-extension.swift in Sources */,
 				0A77AD2C27F48E1600DD058C /* ModuleFactory.swift in Sources */,
 				0A6B8C7128116F3E00BD2A36 /* StatusModel.swift in Sources */,
+				0A1D2830286A55B900FA3F34 /* Post.xcdatamodeld in Sources */,
 				0A77AD2E27F48E9D00DD058C /* FeedPresenter.swift in Sources */,
 				0A844A232745207600C2DB82 /* PhotosViewController.swift in Sources */,
 				0AFD77E22718D6F3006F8DBB /* SceneDelegate.swift in Sources */,
@@ -577,6 +592,7 @@
 				0A77AD2827EBC75E00DD058C /* Coordinators.swift in Sources */,
 				0A9A05C1271C726F00D49AEE /* TabBar.swift in Sources */,
 				0A970BED27BD9EAF00F5B6C5 /* User.swift in Sources */,
+				0A1D2832286A767600FA3F34 /* MyRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +693,6 @@
 		0A6E7E5C27A9ED4300089124 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5D399ZX79K;
@@ -696,7 +711,6 @@
 		0A6E7E5D27A9ED4300089124 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5D399ZX79K;
@@ -831,7 +845,6 @@
 		0AFD77F12718D6F5006F8DBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -860,7 +873,6 @@
 		0AFD77F22718D6F5006F8DBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -945,6 +957,19 @@
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0A1D282E286A55B900FA3F34 /* Post.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0A1D282F286A55B900FA3F34 /* Post.xcdatamodel */,
+			);
+			currentVersion = 0A1D282F286A55B900FA3F34 /* Post.xcdatamodel */;
+			path = Post.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0AFD77D42718D6F3006F8DBB /* Project object */;
 }

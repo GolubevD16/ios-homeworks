@@ -33,7 +33,10 @@ final class DataProvider{
     }
     
     static func checkAuth() -> Bool{
-        guard let results = realm?.objects(UserDB.self) else {return false}
+        guard let results = realm?.objects(UserDB.self) else {
+            return false
+        }
+        if results.isEmpty { return false }
         return results[0].isAuth
     }
 }
