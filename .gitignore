@@ -1,0 +1,10 @@
+#Игнорируем файлы, находящиеся в подкаталоге tmp и файлы, заканчивающиеся суффиксами _old, _backup
+tmp/
+*_old
+*_backup
+
+#Игнорируем файлы Thumbs.db и .DS_Store
+Thumbs.db 
+.DS_Store
+Pods/
+Realm/
