@@ -9,24 +9,27 @@ import Foundation
 
 protocol FeedPresenterInput: AnyObject{
     var feedView: FeedView {get set}
-    var buttonPressed: (() -> Void)? {get set}
 }
 
 protocol FeedPresenterOutput: AnyObject{
     var buttonPressed: (() -> Void)? { get set }
+    var mapPressed: (() -> Void)? {get set}
 }
 
 protocol NextVC{
     func nextVC() -> ()
+    func openMap() -> ()
     func checkWord(word: String) -> ()
 }
 
 final class FeedPresenter: FeedPresenterOutput{
+    
     weak var input: FeedPresenterInput?
     let feedView: FeedView
 
     var model: Model?
     var buttonPressed: (() -> Void)?
+    var mapPressed: (() -> Void)?
     
     init() {
         feedView = FeedView()
@@ -45,6 +48,10 @@ final class FeedPresenter: FeedPresenterOutput{
 }
 
 extension FeedPresenter: NextVC{
+    func openMap() {
+        mapPressed?()
+    }
+    
     func checkWord(word: String) {
         model = Model()
         model?.check(word: word)
@@ -53,4 +60,5 @@ extension FeedPresenter: NextVC{
     func nextVC() {
         buttonPressed?()
     }
+    
 }

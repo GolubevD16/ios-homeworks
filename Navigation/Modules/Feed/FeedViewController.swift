@@ -16,6 +16,12 @@ class FeedViewController: UIViewController {
         }
     }
     
+    var mapPressed: (() -> Void)?{
+        didSet{
+            output.mapPressed = mapPressed
+        }
+    }
+    
     init(output: FeedPresenterOutput, view: FeedView){
         self.output = output
         self.feedView = view
@@ -29,6 +35,11 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayoutFeedView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setupLayoutFeedView() {
