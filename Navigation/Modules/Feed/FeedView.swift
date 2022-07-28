@@ -27,6 +27,15 @@ class FeedView: UIView {
         return secondButton
     }()
     
+    lazy var mapButton: CustomButton = {
+        mapButton = CustomButton(title: "Открыть карту", titleColor: .cyan, onTap: delegate?.openMap)
+        mapButton.backgroundColor = .systemPink
+        mapButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(mapButton)
+        
+        return mapButton
+    }()
+    
     lazy var customTextField: UITextField = {
         customTextField = UITextField()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -76,9 +85,12 @@ class FeedView: UIView {
     private func setupLayout(){
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            stack.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
             stack.widthAnchor.constraint(equalToConstant: 150),
-            checkLabel.heightAnchor.constraint(equalToConstant: 30)
+            checkLabel.heightAnchor.constraint(equalToConstant: 30),
+            
+            mapButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            mapButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 32),
         ])
     }
     
