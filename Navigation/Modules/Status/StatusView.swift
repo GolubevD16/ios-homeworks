@@ -19,9 +19,10 @@ class StatusView: UIView {
     }
     
     lazy var alertButton: CustomButton = {
-        alertButton = CustomButton(title: "Большая красная кнопка", titleColor: .white, onTap: delegate?.showAlert)
+        alertButton = CustomButton(title: "Big red button", titleColor: .white, onTap: delegate?.showAlert)
         alertButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(alertButton)
+        // Большая красная кнопка
         
         
         return alertButton

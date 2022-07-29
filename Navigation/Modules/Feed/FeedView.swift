@@ -12,7 +12,7 @@ class FeedView: UIView {
     
     let stack = UIStackView()
     lazy var firstButton: CustomButton = {
-        firstButton = CustomButton(title: "Первая кнопка", titleColor: .white, onTap: delegate?.nextVC)
+        firstButton = CustomButton(title: "First button", titleColor: .white, onTap: delegate?.nextVC)
         firstButton.backgroundColor = .systemCyan
         firstButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -20,15 +20,16 @@ class FeedView: UIView {
     }()
     
     lazy var secondButton: CustomButton = {
-        secondButton = CustomButton(title: "Вторая кнопка", titleColor: .white, onTap: delegate?.nextVC)
+        secondButton = CustomButton(title: "Second button", titleColor: .white, onTap: delegate?.nextVC)
         secondButton.backgroundColor = .systemPink
         secondButton.translatesAutoresizingMaskIntoConstraints = false
+        //
         
         return secondButton
     }()
     
     lazy var mapButton: CustomButton = {
-        mapButton = CustomButton(title: "Открыть карту", titleColor: .cyan, onTap: delegate?.openMap)
+        mapButton = CustomButton(title: "Open the map", titleColor: .cyan, onTap: delegate?.openMap)
         mapButton.backgroundColor = .systemPink
         mapButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mapButton)

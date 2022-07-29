@@ -46,9 +46,12 @@ class LogInViewController: UIViewController {
     
     private func checkAuth(){
         if DataProvider.checkAuth(){
-            let currentUser = User(fullName: "не указано", avatar: "belka", status: "установите статус")
-            buttonPressed?(currentUser, "не указано")
+            let currentUser = User(fullName: "not specified", avatar: "belka", status: "set the status")
+            buttonPressed?(currentUser, "not specified")
         }
+        // не указано
+        // установите статус
+        // не указано
     }
     
     private func generatePassword(_ lenth: Int){
@@ -77,10 +80,12 @@ class LogInViewController: UIViewController {
     }
     
     private func makeAlert(mess: String){
-        let alert = UIAlertController(title: "Внимание", message: mess, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Attention", message: mess, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
         present(alert, animated: true, completion: nil)
+        // Внимание
+        //
     }
     
     @objc func keyboardWillShow(notification: Notification) {
@@ -100,35 +105,45 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController: LogInViewControllerDelegate {
     func registr() {
-        let currentUser = User(fullName: "не указано", avatar: "belka", status: "установите статус")
-        buttonPressed?(currentUser, "не указано")
-        makeAlert(mess: "Зарегистрирован новый пользователь")
+        let currentUser = User(fullName: "not specified", avatar: "belka", status: "set the status")
+        buttonPressed?(currentUser, "not specified")
+        makeAlert(mess: "A new user has been registered")
     }
+    // не указано
+    // установите статус
+    // не указано
+    // Зарегистрирован новый пользователь
     
     func notAllField() {
         loginView.animateButton()
-        makeAlert(mess: "Заполните все поля")
+        makeAlert(mess: "Fill in all the fields")
+        // Заполните все поля
     }
     
     func weakPass() {
         loginView.animateButton()
-        makeAlert(mess: "Пароль должен содержать минимум 6 символов")
+        makeAlert(mess: "The password must contain at least 6 characters")
+        // Пароль должен содержать минимум 6 символов
     }
     
     func badEmail() {
         loginView.animateButton()
-        makeAlert(mess: "Введен некоректный Email")
+        makeAlert(mess: "Incorrect Email has been entered")
+        // Введен некоректный Email
     }
     
     func passFail() {
         loginView.animateButton()
-        makeAlert(mess: "Введен неверный пароль")
+        makeAlert(mess: "Invalid password entered")
+        // Введен неверный пароль
     }
     
     func login() {
-        let currentUser = User(fullName: "не указано", avatar: "belka", status: "установите статус")
-        buttonPressed?(currentUser, "не указано")
-        makeAlert(mess: "Вы успешно авторизировались")
+        let currentUser = User(fullName: "not specified", avatar: "belka", status: "set the status")
+        buttonPressed?(currentUser, "not specified")
+        makeAlert(mess: "You have successfully logged in")
+        // не указано
+        // Вы успешно авторизировались
     }
     
     
