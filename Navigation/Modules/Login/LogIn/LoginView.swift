@@ -39,7 +39,7 @@ class LoginView: UIView {
     
     lazy var logInButton: CustomButton = {
         let color: UIImage? = UIImage(named: "blue_pixel")
-        logInButton = CustomButton(title: "Log in", titleColor: .white, onTap: { [weak self] in
+        logInButton = CustomButton(title: "Log in".localized, titleColor: .white, onTap: { [weak self] in
             self?.tappedButton(sender: self?.logInButton ?? UIButton())
         })
         logInButton.setBackgroundImage(color?.image(alpha: 1), for: .normal)
@@ -55,7 +55,7 @@ class LoginView: UIView {
     
     lazy var bruteForce: CustomButton = {
         let color: UIImage? = UIImage(named: "blue_pixel")
-        bruteForce = CustomButton(title: "Подобрать пароль", titleColor: .white, onTap: {[weak self] in
+        bruteForce = CustomButton(title: "Choose a password".localized, titleColor: .white, onTap: {[weak self] in
             self?.tappedBruteForce()
         })
         bruteForce.setBackgroundImage(color?.image(alpha: 1), for: .normal)
@@ -135,7 +135,7 @@ class LoginView: UIView {
         emailTextField.toAutoLayout()
         emailTextField.backgroundColor = .systemGray6
         emailTextField.textColor = .black
-        emailTextField.placeholder = "Email or phone number"
+        emailTextField.placeholder = "Email or phone number".localized
         emailTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         emailTextField.autocapitalizationType = .none
         
@@ -152,7 +152,7 @@ class LoginView: UIView {
         passwordTextField.toAutoLayout()
         passwordTextField.backgroundColor = .systemGray6
         passwordTextField.textColor = .black
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = "Password".localized
         passwordTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true

@@ -29,7 +29,6 @@ final class LogInInspector: LogInViewControllerCheckerDelegate{
                 }
                 if error?.localizedDescription == authError.cantLogin.rawValue || error?.localizedDescription == authError.userNoyFound.rawValue{
                     Auth.auth().createUser(withEmail: inputLogin, password: inputPassword) { result, error1 in
-                        print(error1?.localizedDescription ?? "not error")
                         if error1 == nil{
                             self.delegate?.registr()
                             DataProvider.addUser(email: inputLogin, pas: inputPassword)
@@ -40,7 +39,6 @@ final class LogInInspector: LogInViewControllerCheckerDelegate{
                         if error1?.localizedDescription == authError.failPassword.rawValue{
                             self.delegate?.passFail()
                         }
-                        print(error1?.localizedDescription ?? "not error")
                     }
                 }
             }

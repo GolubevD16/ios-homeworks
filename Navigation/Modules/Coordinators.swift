@@ -68,6 +68,9 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         feedVC?.buttonPressed = {[weak self] in
             self?.showFeedVC()
         }
+        feedVC?.mapPressed = { [weak self] in
+            self?.showMap()
+        }
     }
     
     private func showProfileVC(user: User, name: String){
@@ -78,6 +81,11 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
     
     private func showFeedVC(){
         let coordinator = PostCoordinator(navController: FeedNavController)
+        coordinator.start()
+    }
+    
+    private func showMap(){
+        let coordinator = MapCoordinator(navController: FeedNavController)
         coordinator.start()
     }
     
@@ -106,7 +114,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         
         LikePostNavController.tabBarItem.title = "liked posts"
         LikePostNavController.tabBarItem.image = UIImage(systemName: "heart.fill") ?? UIImage()
-        LikePostNavController.topViewController?.title = "Posts"
+        LikePostNavController.topViewController?.title = "Posts".localized
         updateNavBarAppearance(navController: LikePostNavController)
     }
     
@@ -220,6 +228,24 @@ final class PhotosCoordinator: FinishingCoordinator{
     private func initWindow(){
         let photoVc = ModuleFactory.buildPhotos()
         navController?.pushViewController(photoVc, animated: true)
+    }
+}
+
+final class MapCoordinator: FinishingCoordinator{
+    private weak var navController: UINavigationController?
+    var onfinish: (() -> Void)?
+    
+    init(navController: UINavigationController?){
+        self.navController = navController
+    }
+    
+    func start() {
+        initWindow()
+    }
+    
+    private func initWindow(){
+        let mapVc = ModuleFactory.buildMap()
+        navController?.pushViewController(mapVc, animated: true)
     }
 }
 

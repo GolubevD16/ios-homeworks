@@ -29,7 +29,7 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-        navigationItem.title = "Photo Gallery"
+        navigationItem.title = "Photo Gallery".localized
         setupLayout()
     }
     
