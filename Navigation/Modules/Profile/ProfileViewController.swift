@@ -138,7 +138,7 @@ class ProfileViewController: UIViewController {
     
     private func configureProfileHeaderView() {
             //guard let user = userService.getUser(name: name) else { return }
-        profileHeaderView.initWithUser(user: User(fullName: "not specified", avatar: "belka", status: "set the status"))
+        profileHeaderView.initWithUser(user: User(fullName: "not specified".localized, avatar: "belka", status: "set the status".localized))
         //
     }
     

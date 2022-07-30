@@ -114,7 +114,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         
         LikePostNavController.tabBarItem.title = "liked posts"
         LikePostNavController.tabBarItem.image = UIImage(systemName: "heart.fill") ?? UIImage()
-        LikePostNavController.topViewController?.title = "Posts"
+        LikePostNavController.topViewController?.title = "Posts".localized
         updateNavBarAppearance(navController: LikePostNavController)
     }
     

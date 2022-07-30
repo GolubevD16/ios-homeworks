@@ -1065,8 +1065,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInInspector.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "checkLoginPasswordAvailability(inputLogin:inputPassword:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1097,8 +1097,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "login()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1113,8 +1113,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "passFail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1129,8 +1129,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "tappedButton(sender:name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1145,8 +1145,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "registr()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1161,8 +1161,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInInspector.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "checkLoginPasswordAvailability(inputLogin:inputPassword:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1209,8 +1209,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInInspector.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "checkLoginPasswordAvailability(inputLogin:inputPassword:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1243,8 +1243,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "CoreDataManager"
-            landmarkType = "3">
+            landmarkName = "persistentStoreCoordinator"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "F0E2DED0-619A-4EF8-8B3F-E21D54AF88A3 - d5a781abcf93ea6e"
@@ -1291,8 +1291,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "CoreDataManager"
-            landmarkType = "3">
+            landmarkName = "persistentStoreCoordinator"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1483,8 +1483,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "CoreDataManager"
-            landmarkType = "3">
+            landmarkName = "persistentStoreCoordinator"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1499,8 +1499,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "CoreDataManager"
-            landmarkType = "3">
+            landmarkName = "managedObjectModel"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1515,8 +1515,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "CoreDataManager"
-            landmarkType = "3">
+            landmarkName = "managedObjectModel"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1579,8 +1579,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "CoreDataManager"
-            landmarkType = "3">
+            landmarkName = "persistentStoreCoordinator"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1641,8 +1641,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "login()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1657,8 +1657,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "registr()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1673,8 +1673,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "notAllField()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1689,8 +1689,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "weakPass()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1705,8 +1705,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "badEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1721,8 +1721,8 @@
             filePath = "Navigation/Modules/Login/LogIn/LogInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "passFail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1753,23 +1753,9 @@
             filePath = "Navigation/Modules/Map/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BE621E03-D31D-486D-81C1-0AA8128C5BA6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Navigation/Modules/Map/MapViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "checkUserLocationPermissions()"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "addRoute()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

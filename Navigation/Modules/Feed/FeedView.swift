@@ -12,7 +12,7 @@ class FeedView: UIView {
     
     let stack = UIStackView()
     lazy var firstButton: CustomButton = {
-        firstButton = CustomButton(title: "First button", titleColor: .white, onTap: delegate?.nextVC)
+        firstButton = CustomButton(title: "First button".localized, titleColor: .white, onTap: delegate?.nextVC)
         firstButton.backgroundColor = .systemCyan
         firstButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -20,16 +20,15 @@ class FeedView: UIView {
     }()
     
     lazy var secondButton: CustomButton = {
-        secondButton = CustomButton(title: "Second button", titleColor: .white, onTap: delegate?.nextVC)
+        secondButton = CustomButton(title: "Second button".localized, titleColor: .white, onTap: delegate?.nextVC)
         secondButton.backgroundColor = .systemPink
         secondButton.translatesAutoresizingMaskIntoConstraints = false
-        //
         
         return secondButton
     }()
     
     lazy var mapButton: CustomButton = {
-        mapButton = CustomButton(title: "Open the map", titleColor: .cyan, onTap: delegate?.openMap)
+        mapButton = CustomButton(title: "Open the map".localized, titleColor: .cyan, onTap: delegate?.openMap)
         mapButton.backgroundColor = .systemPink
         mapButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mapButton)
@@ -41,13 +40,13 @@ class FeedView: UIView {
         customTextField = UITextField()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.backgroundColor = .cyan
-        customTextField.placeholder = "password"
+        customTextField.placeholder = "password".localized
         
         return customTextField
     }()
     
     lazy var btn: CustomButton = {
-        btn = CustomButton(title: "click", titleColor: .black, onTap: { [weak self] in
+        btn = CustomButton(title: "click".localized, titleColor: .black, onTap: { [weak self] in
             self?.changedTextTapped()
         })
         btn.backgroundColor = .green
@@ -114,7 +113,7 @@ class FeedView: UIView {
     func animateRed() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.checkLabel.textColor = .red
-            self?.checkLabel.text = "Uncorrect"
+            self?.checkLabel.text = "Incorrect".localized
             self?.checkLabel.textAlignment = .center
             self?.layoutIfNeeded()
         }
@@ -123,7 +122,7 @@ class FeedView: UIView {
     func animateGreen() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.checkLabel.textColor = .green
-            self?.checkLabel.text = "Correct"
+            self?.checkLabel.text = "Correct".localized
             self?.checkLabel.textAlignment = .center
             self?.layoutIfNeeded()
         }

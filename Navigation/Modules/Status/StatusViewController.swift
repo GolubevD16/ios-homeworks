@@ -31,15 +31,14 @@ class StatusViewController: UIViewController {
 
 extension StatusViewController: ShowAlert{
     func showAlert() {
-        let alert = UIAlertController(title: "You have pressed the big red button 0_o", message: "Do you want to know what will happen next?", preferredStyle: .alert)
-        // Вы нажали большую красную кнопку 0_о
-        // Хотите узнать, что будет дальше?
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { alert -> Void in
-            print("Boom")
+        let alert = UIAlertController(title: "You have pressed the big red button 0_o".localized, message: "Do you want to know what will happen next?".localized, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { alert -> Void in
+            print("Boom".localized)
         }
         ))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { alert -> Void in
-            print("No, it's no")
+        alert.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: { alert -> Void in
+            print("No, it's no".localized)
         }))
         present(alert, animated: true, completion: nil)
     }

@@ -8,8 +8,8 @@
 import UIKit
 
 public enum Constans {
-    static let feedTitle: String = "Feed"
-    static let profileTitle: String = "Profile"
+    static let feedTitle: String = "Feed".localized
+    static let profileTitle: String = "Profile".localized
     static let feedImageName: String = "list.bullet.rectangle.fill"
     static let profileImageName: String = "person"
 }
