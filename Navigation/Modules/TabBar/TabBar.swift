@@ -17,6 +17,6 @@ public enum Constans {
 class TabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .appTintColor
     }
 }

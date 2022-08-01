@@ -123,7 +123,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         let navBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         
-        let navTintColor: UIColor = .white
+        let navTintColor: UIColor = .appTintColor
         navBarAppearance.backgroundColor = navTintColor
         
         navController.navigationBar.standardAppearance = navBarAppearance
@@ -182,7 +182,7 @@ final class StatusCoordinator: FinishingCoordinator{
 
 // MARK: ProfileCoordinator
 final class ProfileCoordinator: FinishingCoordinator{
-    private weak var navController: UINavigationController?
+    private let navController: UINavigationController
     private let currentUser: User
     private let name: String
     var onfinish: (() -> Void)?
@@ -195,14 +195,17 @@ final class ProfileCoordinator: FinishingCoordinator{
     
     func start() {
         initWindow()
-        let profileVC = navController?.viewControllers.last as? ProfileViewController
-        profileVC?.photosTapped = {[weak self] in
+        
+        let profileVc = ModuleFactory.buildProfile(photosTapped: self.showPhotos, userService: currentUser, name: name)
+        navController.pushViewController(profileVc, animated: true)
+
+                
+        profileVc.photosTapped = {[weak self] in
             self?.showPhotos()}
     }
     
     private func initWindow(){
-        let profileVc = ModuleFactory.buildProfile(photosTapped: self.showPhotos, userService: currentUser, name: name)
-        navController?.pushViewController(profileVc, animated: true)
+        
     }
     
     private func showPhotos(){

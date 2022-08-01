@@ -41,6 +41,7 @@
 		0A844A25274529A100C2DB82 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A24274529A100C2DB82 /* CollectionViewCell.swift */; };
 		0A844A2727452AB800C2DB82 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A2627452AB800C2DB82 /* PhotoData.swift */; };
 		0A84EC5928949B010032EB52 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A84EC5B28949B010032EB52 /* Localizable.strings */; };
+		0A84EC5E289738EB0032EB52 /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84EC5D289738EB0032EB52 /* UIColor + extension.swift */; };
 		0A905DD52739D960008A2FCD /* UIImage-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A905DD42739D960008A2FCD /* UIImage-extension.swift */; };
 		0A905DD72739EB6F008A2FCD /* LogInViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A905DD62739EB6F008A2FCD /* LogInViewControllerDelegate.swift */; };
 		0A925FD5271CA4B500ADEC52 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A925FD4271CA4B500ADEC52 /* PostViewController.swift */; };
@@ -144,6 +145,7 @@
 		0A84EC5628949A730032EB52 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0A84EC5A28949B010032EB52 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A84EC5C28949B040032EB52 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0A84EC5D289738EB0032EB52 /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		0A905DD42739D960008A2FCD /* UIImage-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-extension.swift"; sourceTree = "<group>"; };
 		0A905DD62739EB6F008A2FCD /* LogInViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewControllerDelegate.swift; sourceTree = "<group>"; };
 		0A925FD4271CA4B500ADEC52 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				0A26747C27360FEE0094D00E /* TextField-extension.swift */,
 				0A905DD42739D960008A2FCD /* UIImage-extension.swift */,
 				0A6B8C2E2807899E00BD2A36 /* string +  extension.swift */,
+				0A84EC5D289738EB0032EB52 /* UIColor + extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				0A9A05C1271C726F00D49AEE /* TabBar.swift in Sources */,
 				0A970BED27BD9EAF00F5B6C5 /* User.swift in Sources */,
 				0A1D2832286A767600FA3F34 /* MyRecognizer.swift in Sources */,
+				0A84EC5E289738EB0032EB52 /* UIColor + extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

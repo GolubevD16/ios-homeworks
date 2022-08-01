@@ -32,7 +32,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        
+        view.backgroundColor = UIColor.appTintColor
         checkAuth()
         generatePassword(lenthOfGenerationPassword)
         setupLayoutLoginView()

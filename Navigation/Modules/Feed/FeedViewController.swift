@@ -35,6 +35,8 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayoutFeedView()
+        view.backgroundColor = UIColor.appTintColor
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

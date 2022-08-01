@@ -26,8 +26,8 @@ final class CollectionViewCell: UICollectionViewCell{
         setupLayout()
     }
     
-    func addPhoto(image: UIImage) {
-        imageView.image = image
+    func addPhoto(photoName: String) {
+        imageView.image = UIImage(named: photoName)
     }
     
     private func setupLayout() {
