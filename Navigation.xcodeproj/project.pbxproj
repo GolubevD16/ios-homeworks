@@ -40,6 +40,8 @@
 		0A844A232745207600C2DB82 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A222745207600C2DB82 /* PhotosViewController.swift */; };
 		0A844A25274529A100C2DB82 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A24274529A100C2DB82 /* CollectionViewCell.swift */; };
 		0A844A2727452AB800C2DB82 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A844A2627452AB800C2DB82 /* PhotoData.swift */; };
+		0A84EC5928949B010032EB52 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A84EC5B28949B010032EB52 /* Localizable.strings */; };
+		0A84EC5E289738EB0032EB52 /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84EC5D289738EB0032EB52 /* UIColor + extension.swift */; };
 		0A905DD52739D960008A2FCD /* UIImage-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A905DD42739D960008A2FCD /* UIImage-extension.swift */; };
 		0A905DD72739EB6F008A2FCD /* LogInViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A905DD62739EB6F008A2FCD /* LogInViewControllerDelegate.swift */; };
 		0A925FD5271CA4B500ADEC52 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A925FD4271CA4B500ADEC52 /* PostViewController.swift */; };
@@ -52,6 +54,7 @@
 		0A9A05C1271C726F00D49AEE /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9A05C0271C726F00D49AEE /* TabBar.swift */; };
 		0A9B1F3F27CEC320009DF41A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9B1F3E27CEC320009DF41A /* iOSIntPackage */; };
 		0A9D1153271B8347003E8C14 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D1152271B8347003E8C14 /* FeedViewController.swift */; };
+		0AA97A64288B708E0024EA09 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA97A63288B708E0024EA09 /* MapViewController.swift */; };
 		0AB2DE9B27CEE88E0031F779 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB2DE9A27CEE88E0031F779 /* Media.xcassets */; };
 		0AB2DE9D27DD4C880031F779 /* Custom Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2DE9C27DD4C880031F779 /* Custom Button.swift */; };
 		0AB2DE9F27DEBD890031F779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2DE9E27DEBD890031F779 /* Model.swift */; };
@@ -139,6 +142,10 @@
 		0A844A222745207600C2DB82 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		0A844A24274529A100C2DB82 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0A844A2627452AB800C2DB82 /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
+		0A84EC5628949A730032EB52 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0A84EC5A28949B010032EB52 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0A84EC5C28949B040032EB52 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0A84EC5D289738EB0032EB52 /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		0A905DD42739D960008A2FCD /* UIImage-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-extension.swift"; sourceTree = "<group>"; };
 		0A905DD62739EB6F008A2FCD /* LogInViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewControllerDelegate.swift; sourceTree = "<group>"; };
 		0A925FD4271CA4B500ADEC52 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +157,7 @@
 		0A970C0927C5A8CC00F5B6C5 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		0A9A05C0271C726F00D49AEE /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		0A9D1152271B8347003E8C14 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		0AA97A63288B708E0024EA09 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0AB2DE9A27CEE88E0031F779 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		0AB2DE9C27DD4C880031F779 /* Custom Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Button.swift"; sourceTree = "<group>"; };
 		0AB2DE9E27DEBD890031F779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -225,6 +233,7 @@
 		0A77AD2927F48CD500DD058C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0AA97A62288B705F0024EA09 /* Map */,
 				0A77AD2B27F48E1600DD058C /* ModuleFactory.swift */,
 				0A77AD2727EBC75E00DD058C /* Coordinators.swift */,
 				0AE04E9F273B4A90006F11BD /* TabBar */,
@@ -300,6 +309,14 @@
 			path = Photos;
 			sourceTree = "<group>";
 		};
+		0AA97A62288B705F0024EA09 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0AA97A63288B708E0024EA09 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		0AE04E9E273B4A77006F11BD /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +349,7 @@
 				0A26747C27360FEE0094D00E /* TextField-extension.swift */,
 				0A905DD42739D960008A2FCD /* UIImage-extension.swift */,
 				0A6B8C2E2807899E00BD2A36 /* string +  extension.swift */,
+				0A84EC5D289738EB0032EB52 /* UIColor + extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -386,6 +404,7 @@
 				0A77AD2927F48CD500DD058C /* Modules */,
 				0AFD77ED2718D6F5006F8DBB /* Info.plist */,
 				0A6B8C72281A0B2D00BD2A36 /* GoogleService-Info.plist */,
+				0A84EC5B28949B010032EB52 /* Localizable.strings */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -519,10 +538,11 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 0AFD77D32718D6F3006F8DBB;
 			packageReferences = (
-				0A9B1F3D27CEC320009DF41A /* XCRemoteSwiftPackageReference "iOSIntPackage.git" */,
+				0A9B1F3D27CEC320009DF41A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = 0AFD77DD2718D6F3006F8DBB /* Products */;
 			projectDirPath = "";
@@ -554,6 +574,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A84EC5928949B010032EB52 /* Localizable.strings in Resources */,
 				0AFD77EC2718D6F5006F8DBB /* LaunchScreen.storyboard in Resources */,
 				0A6B8C73281A0B2D00BD2A36 /* GoogleService-Info.plist in Resources */,
 				0AFD77E92718D6F5006F8DBB /* Assets.xcassets in Resources */,
@@ -679,6 +700,7 @@
 				0A970C0427C5843B00F5B6C5 /* Cheker.swift in Sources */,
 				0AE04EA8273C92BD006F11BD /* TableViewCell.swift in Sources */,
 				0AFD77E02718D6F3006F8DBB /* AppDelegate.swift in Sources */,
+				0AA97A64288B708E0024EA09 /* MapViewController.swift in Sources */,
 				0A9D1153271B8347003E8C14 /* FeedViewController.swift in Sources */,
 				0A844A1F2744872C00C2DB82 /* PhotoTableViewCell.swift in Sources */,
 				0A1D282928669DBB00FA3F34 /* BDManager.swift in Sources */,
@@ -715,6 +737,7 @@
 				0A9A05C1271C726F00D49AEE /* TabBar.swift in Sources */,
 				0A970BED27BD9EAF00F5B6C5 /* User.swift in Sources */,
 				0A1D2832286A767600FA3F34 /* MyRecognizer.swift in Sources */,
+				0A84EC5E289738EB0032EB52 /* UIColor + extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,10 +762,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0A84EC5B28949B010032EB52 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A84EC5A28949B010032EB52 /* en */,
+				0A84EC5C28949B040032EB52 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		0AFD77EA2718D6F5006F8DBB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0AFD77EB2718D6F5006F8DBB /* Base */,
+				0A84EC5628949A730032EB52 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -856,6 +889,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -917,6 +951,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1068,7 +1103,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A9B1F3D27CEC320009DF41A /* XCRemoteSwiftPackageReference "iOSIntPackage.git" */ = {
+		0A9B1F3D27CEC320009DF41A /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage.git";
 			requirement = {
@@ -1081,7 +1116,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		0A9B1F3E27CEC320009DF41A /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A9B1F3D27CEC320009DF41A /* XCRemoteSwiftPackageReference "iOSIntPackage.git" */;
+			package = 0A9B1F3D27CEC320009DF41A /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -68,6 +68,9 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         feedVC?.buttonPressed = {[weak self] in
             self?.showFeedVC()
         }
+        feedVC?.mapPressed = { [weak self] in
+            self?.showMap()
+        }
     }
     
     private func showProfileVC(user: User, name: String){
@@ -78,6 +81,11 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
     
     private func showFeedVC(){
         let coordinator = PostCoordinator(navController: FeedNavController)
+        coordinator.start()
+    }
+    
+    private func showMap(){
+        let coordinator = MapCoordinator(navController: FeedNavController)
         coordinator.start()
     }
     
@@ -106,7 +114,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         
         LikePostNavController.tabBarItem.title = "liked posts"
         LikePostNavController.tabBarItem.image = UIImage(systemName: "heart.fill") ?? UIImage()
-        LikePostNavController.topViewController?.title = "Posts"
+        LikePostNavController.topViewController?.title = "Posts".localized
         updateNavBarAppearance(navController: LikePostNavController)
     }
     
@@ -115,7 +123,7 @@ final class TabBarCoordinator: BaseCoordinator, Coordinator{
         let navBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         
-        let navTintColor: UIColor = .white
+        let navTintColor: UIColor = .appTintColor
         navBarAppearance.backgroundColor = navTintColor
         
         navController.navigationBar.standardAppearance = navBarAppearance
@@ -174,7 +182,7 @@ final class StatusCoordinator: FinishingCoordinator{
 
 // MARK: ProfileCoordinator
 final class ProfileCoordinator: FinishingCoordinator{
-    private weak var navController: UINavigationController?
+    private let navController: UINavigationController
     private let currentUser: User
     private let name: String
     var onfinish: (() -> Void)?
@@ -187,14 +195,17 @@ final class ProfileCoordinator: FinishingCoordinator{
     
     func start() {
         initWindow()
-        let profileVC = navController?.viewControllers.last as? ProfileViewController
-        profileVC?.photosTapped = {[weak self] in
+        
+        let profileVc = ModuleFactory.buildProfile(photosTapped: self.showPhotos, userService: currentUser, name: name)
+        navController.pushViewController(profileVc, animated: true)
+
+                
+        profileVc.photosTapped = {[weak self] in
             self?.showPhotos()}
     }
     
     private func initWindow(){
-        let profileVc = ModuleFactory.buildProfile(photosTapped: self.showPhotos, userService: currentUser, name: name)
-        navController?.pushViewController(profileVc, animated: true)
+        
     }
     
     private func showPhotos(){
@@ -220,6 +231,24 @@ final class PhotosCoordinator: FinishingCoordinator{
     private func initWindow(){
         let photoVc = ModuleFactory.buildPhotos()
         navController?.pushViewController(photoVc, animated: true)
+    }
+}
+
+final class MapCoordinator: FinishingCoordinator{
+    private weak var navController: UINavigationController?
+    var onfinish: (() -> Void)?
+    
+    init(navController: UINavigationController?){
+        self.navController = navController
+    }
+    
+    func start() {
+        initWindow()
+    }
+    
+    private func initWindow(){
+        let mapVc = ModuleFactory.buildMap()
+        navController?.pushViewController(mapVc, animated: true)
     }
 }
 

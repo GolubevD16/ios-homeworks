@@ -44,4 +44,8 @@ struct ModuleFactory {
         
         return ProfileViewController(viewModel: viewModel, userService: userService, name: name)
     }
+    
+    static func buildMap() -> MapViewController {
+        return MapViewController()
+    }
 }

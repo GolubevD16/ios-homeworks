@@ -138,7 +138,8 @@ class ProfileViewController: UIViewController {
     
     private func configureProfileHeaderView() {
             //guard let user = userService.getUser(name: name) else { return }
-        profileHeaderView.initWithUser(user: User(fullName: "не указано", avatar: "belka", status: "установите статус"))
+        profileHeaderView.initWithUser(user: User(fullName: "not specified".localized, avatar: "belka", status: "set the status".localized))
+        //
     }
     
     @objc private func hanbleOpenTapGestureRecognizer(gesture: UITapGestureRecognizer){
