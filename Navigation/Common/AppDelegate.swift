@@ -13,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UINavigationBar.appearance().barTintColor = UIColor.appTintColor
         let appConfiguration: AppConfiguration = AppConfiguration(rawValue: AppConfiguration.allCases.randomElement()?.rawValue ?? String())!
         NetworkManager.startURLSessionWithStringUrl(with: appConfiguration.rawValue)
         FirebaseApp.configure()
+        
         return true
     }
 

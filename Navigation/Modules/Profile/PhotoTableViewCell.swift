@@ -13,8 +13,8 @@ final class PhotoTableViewCell: UITableViewCell{
     lazy var photosLabel: UILabel = {
         photosLabel = UILabel(frame: .zero)
         photosLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        photosLabel.text = "Photos"
-        photosLabel.textColor = .black
+        photosLabel.text = "Photos".localized
+        photosLabel.textColor = UIColor.appTextColor
         photosLabel.toAutoLayout()
 
         return photosLabel
@@ -22,7 +22,7 @@ final class PhotoTableViewCell: UITableViewCell{
     
     lazy var arrowButton: UIImageView = {
         arrowButton = UIImageView(image: UIImage(systemName: "arrow.right"))
-        arrowButton.tintColor = .black
+        arrowButton.tintColor = UIColor.appTextColor
         arrowButton.toAutoLayout()
         
         return arrowButton

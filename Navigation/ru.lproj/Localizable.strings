@@ -1,0 +1,50 @@
+/* 
+  Localizable.string.strings
+  Navigation
+
+  Created by Дмитрий Голубев on 30.07.2022.
+  
+*/
+
+"delete all points" = "Удалить все точки";
+"First button" = "Первая кнопка";
+"Build a route" = "Построить маршрут";
+"Permission required" = "Требуется разрешение";
+"Status not being processed" = "Не обрабатываемый статус";
+"Error" = "Ошибка";
+"You must specify the end point of the route" = "Необходимо указать конечную точку маршрута";
+"Feed" = "Лента";
+"Profile" = "Профиль";
+"not specified" = "не указано";
+"set the status" = "установите статус";
+"Attention" = "Внимание";
+"A new user has been registered" = "Зарегистрирован новый пользователь";
+"Fill in all the fields" = "Заполните все поля";
+"The password must contain at least 6 characters" = "Пароль должен содержать минимум 6 символов";
+"Incorrect Email has been entered" = "Введен некоректный Email";
+"Invalid password entered" = "Введен неверный пароль";
+"You have successfully logged in" = "Вы успешно авторизировались";
+"Log in" = "Вход";
+"Choose a password" = "Подобрать пароль";
+"Email or phone number" = "Email или номер телефона";
+"Password" = "Пароль";
+"You have pressed the big red button 0_o" = "Вы нажали большую красную кнопку 0_о";
+"Do you want to know what will happen next?" = "Хотите узнать, что будет дальше?";
+"Yes" = "Да";
+"Boom" = "Бум!";
+"No" = "Нет";
+"No, it's no" = "Нет, так нет";
+"Big red button" = "Большая красная кнопка";
+"Waiting for something..." = "Введите что-то...";
+"Set Status..." = "Установите статус...";
+"Photos" = "Фото";
+"Status" = "Статус";
+"Photo Gallery" = "Галерея";
+"Second button" = "Вторая кнопка";
+"Open the map" = "Открыть карту";
+"password" = "пароль";
+"click" = "клик";
+"Incorrect" = "Некоректно";
+"Correct" = "Коретно";
+"Posts" = "Посты";
+

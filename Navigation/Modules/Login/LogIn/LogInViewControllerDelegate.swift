@@ -19,5 +19,5 @@ protocol LogInViewControllerDelegate: AnyObject {
 }
 
 protocol LogInViewControllerCheckerDelegate: AnyObject {
-    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String)
+    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String, _ completion: @escaping () -> Void)
 }

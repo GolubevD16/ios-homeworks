@@ -12,7 +12,7 @@ class FeedView: UIView {
     
     let stack = UIStackView()
     lazy var firstButton: CustomButton = {
-        firstButton = CustomButton(title: "Первая кнопка", titleColor: .white, onTap: delegate?.nextVC)
+        firstButton = CustomButton(title: "First button".localized, titleColor: .white, onTap: delegate?.nextVC)
         firstButton.backgroundColor = .systemCyan
         firstButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -20,24 +20,33 @@ class FeedView: UIView {
     }()
     
     lazy var secondButton: CustomButton = {
-        secondButton = CustomButton(title: "Вторая кнопка", titleColor: .white, onTap: delegate?.nextVC)
+        secondButton = CustomButton(title: "Second button".localized, titleColor: .white, onTap: delegate?.nextVC)
         secondButton.backgroundColor = .systemPink
         secondButton.translatesAutoresizingMaskIntoConstraints = false
         
         return secondButton
     }()
     
+    lazy var mapButton: CustomButton = {
+        mapButton = CustomButton(title: "Open the map".localized, titleColor: .cyan, onTap: delegate?.openMap)
+        mapButton.backgroundColor = .systemPink
+        mapButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(mapButton)
+        
+        return mapButton
+    }()
+    
     lazy var customTextField: UITextField = {
         customTextField = UITextField()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.backgroundColor = .cyan
-        customTextField.placeholder = "password"
+        customTextField.placeholder = "password".localized
         
         return customTextField
     }()
     
     lazy var btn: CustomButton = {
-        btn = CustomButton(title: "click", titleColor: .black, onTap: { [weak self] in
+        btn = CustomButton(title: "click".localized, titleColor: .black, onTap: { [weak self] in
             self?.changedTextTapped()
         })
         btn.backgroundColor = .green
@@ -76,9 +85,12 @@ class FeedView: UIView {
     private func setupLayout(){
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            stack.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
             stack.widthAnchor.constraint(equalToConstant: 150),
-            checkLabel.heightAnchor.constraint(equalToConstant: 30)
+            checkLabel.heightAnchor.constraint(equalToConstant: 30),
+            
+            mapButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            mapButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 32),
         ])
     }
     
@@ -101,7 +113,7 @@ class FeedView: UIView {
     func animateRed() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.checkLabel.textColor = .red
-            self?.checkLabel.text = "Uncorrect"
+            self?.checkLabel.text = "Incorrect".localized
             self?.checkLabel.textAlignment = .center
             self?.layoutIfNeeded()
         }
@@ -110,7 +122,7 @@ class FeedView: UIView {
     func animateGreen() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.checkLabel.textColor = .green
-            self?.checkLabel.text = "Correct"
+            self?.checkLabel.text = "Correct".localized
             self?.checkLabel.textAlignment = .center
             self?.layoutIfNeeded()
         }

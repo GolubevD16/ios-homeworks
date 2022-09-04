@@ -62,14 +62,14 @@ class ProfileHeaderView: UIView {
     lazy var statusView: UILabel = {
         statusView = UILabel()
         statusView.font = Constants.StatusFont
-        statusView.text = "Waiting for something..."
+        statusView.text = "Waiting for something...".localized
         statusView.textColor = Constants.StatusColor
         
         return statusView
     }()
     
     lazy var showStatusButton: CustomButton = {
-        showStatusButton = CustomButton(title: "Set status", titleColor: .white, onTap: {[weak self] in
+        showStatusButton = CustomButton(title: "set the status", titleColor: .white, onTap: {[weak self] in
                                                                                             self?.buttonPressed()})
 //        showStatusButton.setTitleColor(.white, for: .normal)
 //        showStatusButton.setTitle("Set status", for: .normal)
@@ -91,7 +91,7 @@ class ProfileHeaderView: UIView {
         textField.backgroundColor = Constants.textFieldBackgroundColor
         textField.font = Constants.textFieldFont
         textField.textColor = Constants.textFieldColor
-        textField.placeholder = "Set Status..."
+        textField.placeholder = "Set Status...".localized
         
         textField.layer.cornerRadius = Constants.textFieldCornerRadius
         textField.layer.borderColor = Constants.textFieldBorderColor
