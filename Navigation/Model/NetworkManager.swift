@@ -19,10 +19,6 @@ struct NetworkManager {
                 print(error.localizedDescription)
                 return
             }
-//            guard let response = response as? HTTPURLResponse else {return}
-//            guard let data = data else {return}
-//            guard let encodedData = String(data: data, encoding: .utf8) else {return}
-            //print(encodedData, "\n\n", response.allHeaderFields, "\n\n", response.statusCode)
         }
         
         task.resume()

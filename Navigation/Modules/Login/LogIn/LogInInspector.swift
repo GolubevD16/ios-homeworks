@@ -14,30 +14,35 @@ final class LogInInspector: LogInViewControllerCheckerDelegate{
     init(vc: LogInViewControllerDelegate){
         self.delegate = vc
     }
-    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String){
+    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String, _ completion: @escaping () -> Void) {
         if inputLogin.isEmpty || inputPassword.isEmpty{
             delegate?.notAllField()
+            completion()
         } else {
-            Auth.auth().signIn(withEmail: inputLogin, password: inputPassword) { result, error in
-                print(error?.localizedDescription ?? "not error")
+            Auth.auth().signIn(withEmail: inputLogin, password: inputPassword) { [unowned self] result, error in
                 if error == nil{
                     self.delegate?.login()
-                    DataProvider.addUser(email: inputLogin, pas: inputPassword)
+                    completion()
+                    //DataProvider.addUser(email: inputLogin, pas: inputPassword)
                 }
-                if error?.localizedDescription == authError.badlyPassword.rawValue{
+                else if error?.localizedDescription == authError.badlyPassword.rawValue{
                     self.delegate?.badEmail()
+                    completion()
                 }
-                if error?.localizedDescription == authError.cantLogin.rawValue || error?.localizedDescription == authError.userNoyFound.rawValue{
+                else if error?.localizedDescription == authError.cantLogin.rawValue || error?.localizedDescription == authError.userNoyFound.rawValue{
                     Auth.auth().createUser(withEmail: inputLogin, password: inputPassword) { result, error1 in
                         if error1 == nil{
                             self.delegate?.registr()
-                            DataProvider.addUser(email: inputLogin, pas: inputPassword)
+                            completion()
+                            //DataProvider.addUser(email: inputLogin, pas: inputPassword)
                         }
                         if error1?.localizedDescription == authError.weakPass.rawValue{
                             self.delegate?.weakPass()
+                            completion()
                         }
                         if error1?.localizedDescription == authError.failPassword.rawValue{
                             self.delegate?.passFail()
+                            completion()
                         }
                     }
                 }

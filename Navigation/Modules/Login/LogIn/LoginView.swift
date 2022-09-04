@@ -169,7 +169,9 @@ class LoginView: UIView {
     func tappedButton(sender: UIButton) {
         guard let emailText = emailTextField.text else { return }
         guard let passwordText = passwordTextField.text else { return }
-        checkerDelegate?.checkLoginPasswordAvailability(inputLogin: emailText, inputPassword: passwordText)
+        checkerDelegate?.checkLoginPasswordAvailability(inputLogin: emailText, inputPassword: passwordText) {
+            
+        }
 //        if !emailText.isEmpty && !passwordText.isEmpty &&  isAvaiability{
 //            delegate?.tappedButton(sender: sender, name: emailTextField.text ?? "")
 //        } else {

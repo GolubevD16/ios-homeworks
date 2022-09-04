@@ -15,7 +15,6 @@ final class Cheker{
     private init() {}
     
     func checkUser(_ log: String, _ password: String) -> Bool{
-        print(login.hash == log.hash && pswd.hash == password.hash)
         return login.hash == log.hash && pswd.hash == password.hash
     }
 }
