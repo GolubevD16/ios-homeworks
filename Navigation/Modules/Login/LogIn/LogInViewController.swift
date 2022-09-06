@@ -19,6 +19,7 @@ class LogInViewController: UIViewController {
     var checkerDelegate: LogInViewControllerCheckerDelegate?
     var buttonPressed: ((User, String) -> Void)?
     var password: String!
+    private let localAuthorizationService = LocalAuthorizationService()
     
     lazy var loginView: LoginView = {
         loginView = LoginView()
@@ -33,7 +34,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.appTintColor
-        checkAuth()
+        //checkAuth()
         generatePassword(lenthOfGenerationPassword)
         setupLayoutLoginView()
         registerForKeyboardNotification()
@@ -130,6 +131,19 @@ extension LogInViewController: LogInViewControllerDelegate {
         let currentUser = User(fullName: "not specified".localized, avatar: "belka", status: "set the status".localized)
         buttonPressed?(currentUser, "not specified".localized)
         makeAlert(mess: "You have successfully logged in".localized)
+    }
+    
+    func biometric() {
+        localAuthorizationService.authorizeIfPossible { [unowned self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async { [weak self] in
+                    self?.login()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     

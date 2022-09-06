@@ -16,6 +16,7 @@ protocol LogInViewControllerDelegate: AnyObject {
     func passFail()
     func login()
     func weakPass()
+    func biometric()
 }
 
 protocol LogInViewControllerCheckerDelegate: AnyObject {

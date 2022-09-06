@@ -60,6 +60,7 @@
 		0AB2DE9F27DEBD890031F779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2DE9E27DEBD890031F779 /* Model.swift */; };
 		0ACBCD0D28C4D25700567F79 /* LoginInspectorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBCD0C28C4D25700567F79 /* LoginInspectorTest.swift */; };
 		0ACBCD0F28C5337200567F79 /* StatusModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBCD0E28C5337200567F79 /* StatusModelTest.swift */; };
+		0ACBCD1128C7925600567F79 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBCD1028C7925600567F79 /* LocalAuthorizationService.swift */; };
 		0ADA2A60271CC8BA00882297 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA2A5F271CC8BA00882297 /* FeedView.swift */; };
 		0ADA2A62271CC93600882297 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA2A61271CC93600882297 /* ProfileViewController.swift */; };
 		0AE04EA6273B4BF8006F11BD /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE04EA5273B4BF8006F11BD /* PostModel.swift */; };
@@ -174,6 +175,7 @@
 		0ACBCD0028C4CFC900567F79 /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ACBCD0C28C4D25700567F79 /* LoginInspectorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorTest.swift; sourceTree = "<group>"; };
 		0ACBCD0E28C5337200567F79 /* StatusModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModelTest.swift; sourceTree = "<group>"; };
+		0ACBCD1028C7925600567F79 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		0ADA2A5F271CC8BA00882297 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		0ADA2A61271CC93600882297 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0AE04EA5273B4BF8006F11BD /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				0A970C0327C5843B00F5B6C5 /* Cheker.swift */,
 				0A6B8C2C280784B300BD2A36 /* BruteForce.swift */,
 				0A1D282828669DBB00FA3F34 /* BDManager.swift */,
+				0ACBCD1028C7925600567F79 /* LocalAuthorizationService.swift */,
 			);
 			name = LogIn;
 			path = Login/LogIn;
@@ -849,6 +852,7 @@
 				0AFD77E22718D6F3006F8DBB /* SceneDelegate.swift in Sources */,
 				0A970BEF27BDA25A00F5B6C5 /* UserService.swift in Sources */,
 				0A844A2727452AB800C2DB82 /* PhotoData.swift in Sources */,
+				0ACBCD1128C7925600567F79 /* LocalAuthorizationService.swift in Sources */,
 				0A6B8C2D280784B300BD2A36 /* BruteForce.swift in Sources */,
 				0A6B8C2F2807899E00BD2A36 /* string +  extension.swift in Sources */,
 				0A77AD3927FA6F3D00DD058C /* ProfileViewModel.swift in Sources */,

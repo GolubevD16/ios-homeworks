@@ -69,10 +69,20 @@ class LoginView: UIView {
         return bruteForce
     }()
     
+    private lazy var biometricButton: UIButton = {
+        let biometricButton = CustomButton(title: "", titleColor: .systemBackground) { [unowned self] in
+            self.delegate?.biometric()
+        }
+        biometricButton.setBackgroundImage(UIImage(systemName: "faceid"), for: .normal)
+        biometricButton.toAutoLayout()
+        
+        return biometricButton
+    }()
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
         setupStack()
-        scrollView.addSubviews([logoView, logInButton, bruteForce])
+        scrollView.addSubviews([logoView, logInButton, bruteForce, biometricButton])
         self.addSubviews([scrollView])
         scrollView.contentSize = CGSize(width: self.bounds.width, height: self.bounds.height)
         scrollView.isScrollEnabled = false
@@ -111,6 +121,11 @@ class LoginView: UIView {
             bruteForce.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 16),
             bruteForce.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor),
             bruteForce.heightAnchor.constraint(equalToConstant: 50),
+            
+            biometricButton.centerXAnchor.constraint(equalTo: bruteForce.centerXAnchor),
+            biometricButton.topAnchor.constraint(equalTo: bruteForce.bottomAnchor, constant: 16),
+            biometricButton.heightAnchor.constraint(equalToConstant: 50),
+            biometricButton.widthAnchor.constraint(equalToConstant: 50),
             
             activity.topAnchor.constraint(equalTo: passwordTextField.topAnchor),
             activity.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -8),
