@@ -12,7 +12,7 @@ class TableViewCell: UITableViewCell{
     lazy var autor: UILabel = {
         autor = UILabel(frame: .zero)
         autor.font = UIFont.boldSystemFont(ofSize: 20)
-        autor.textColor = .black
+        autor.textColor = UIColor.appTextColor
         autor.numberOfLines = 2
         autor.toAutoLayout()
         
@@ -31,7 +31,7 @@ class TableViewCell: UITableViewCell{
     lazy var descriptionPost: UILabel = {
         descriptionPost = UILabel(frame: .zero)
         descriptionPost.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        descriptionPost.textColor = .systemGray
+        descriptionPost.textColor = UIColor.appTextColor
         descriptionPost.numberOfLines = 0
         descriptionPost.toAutoLayout()
         
@@ -41,7 +41,7 @@ class TableViewCell: UITableViewCell{
     lazy var likesPost: UILabel = {
         likesPost = UILabel(frame: .zero)
         likesPost.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        likesPost.textColor = .black
+        likesPost.textColor = UIColor.appTextColor
         likesPost.toAutoLayout()
         
         return likesPost
@@ -50,7 +50,7 @@ class TableViewCell: UITableViewCell{
     lazy var viewsPost: UILabel = {
         viewsPost = UILabel(frame: .zero)
         viewsPost.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        viewsPost.textColor = .black
+        viewsPost.textColor = UIColor.appTextColor
         viewsPost.toAutoLayout()
         
         return viewsPost

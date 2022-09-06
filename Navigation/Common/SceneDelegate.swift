@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,6 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = TabBarCoordinator(scene: scene)
         appCoordinator?.start()
         window = appCoordinator?.window
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error.localizedDescription)
+        }
         
         if let tabController = window?.rootViewController as? UITabBarController,
            let loginNavigation = tabController.viewControllers?[1] as? UINavigationController,

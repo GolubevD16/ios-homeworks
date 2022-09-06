@@ -49,13 +49,16 @@ struct ResidentModel: Decodable{
     }
 }
 
+protocol StatusModelProtocol {
+    func setTitlePeople(_ completion: @escaping () -> Void)
+}
 
-final class StatusModel{
+final class StatusManager: StatusModelProtocol {
     var status: StatusView?
     var residentsURL = [URL]()
     var residents = [ResidentModel]()
     
-    func setTitlePeople(){
+    func setTitlePeople(_ completion: @escaping () -> Void){
         if let url = URL(string: "https://jsonplaceholder.typicode.com/todos/16"){
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let unwrapedData = data{
@@ -67,6 +70,7 @@ final class StatusModel{
                             let title: String = dict["title"] as! String
                             let completed: Bool = dict["completed"] as! Bool
                             let people = PeopleModel(userId: userId, id: id, title: title, completed: completed)
+                            completion()
                             self.showTitlePeople(people)
                         }
                         

@@ -22,4 +22,9 @@ target 'StorageService' do
     # Pods for testing
   end
 
+target 'NavigationTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
+
 end
