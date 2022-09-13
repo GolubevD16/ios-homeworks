@@ -1,4 +1,6 @@
 PODS:
+  - Firebase (8.9.1):
+    - Firebase/Core (= 8.9.1)
   - Firebase/Auth (8.9.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.9.0)
@@ -102,6 +104,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - RealmSwift
@@ -142,6 +145,6 @@ SPEC CHECKSUMS:
   RealmSwift: 0e0e4786685c4442bf56d3831dfefb5fa05d6fd6
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 9983147f0a99be065007c8bc5e92722c068cd288
+PODFILE CHECKSUM: 95c93c3f7e1a7279884be232495220f4684271de
 
 COCOAPODS: 1.11.2

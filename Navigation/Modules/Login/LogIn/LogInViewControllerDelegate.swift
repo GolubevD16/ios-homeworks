@@ -16,8 +16,9 @@ protocol LogInViewControllerDelegate: AnyObject {
     func passFail()
     func login()
     func weakPass()
+    func biometric()
 }
 
 protocol LogInViewControllerCheckerDelegate: AnyObject {
-    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String)
+    func checkLoginPasswordAvailability(inputLogin: String, inputPassword: String, _ completion: @escaping () -> Void)
 }

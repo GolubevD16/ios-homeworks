@@ -1,0 +1,49 @@
+/* 
+  Localizable.string.strings
+  Navigation
+
+  Created by Дмитрий Голубев on 30.07.2022.
+  
+*/
+
+"delete all points" = "delete all points";
+"First button" = "First button";
+"Build a route" = "Build a route";
+"Permission required" = "Permission required";
+"Status not being processed" = "Status not being processed";
+"Error" = "Error";
+"You must specify the end point of the route" = "You must specify the end point of the route";
+"Feed" = "Feed";
+"Profile" = "Profile";
+"not specified" = "not specified";
+"set the status" = "set the status";
+"Attention" = "Attention";
+"A new user has been registered" = "A new user has been registered";
+"Fill in all the fields" = "Fill in all the fields";
+"The password must contain at least 6 characters" = "The password must contain at least 6 characters";
+"Incorrect Email has been entered" = "Incorrect Email has been entered";
+"Invalid password entered" = "Invalid password entered";
+"You have successfully logged in" = "You have successfully logged in";
+"Log in" = "Log in";
+"Choose a password" = "Choose a password";
+"Email or phone number" = "Email or phone number";
+"Password" = "Password";
+"You have pressed the big red button 0_o" = "You have pressed the big red button 0_o";
+"Do you want to know what will happen next?" = "Do you want to know what will happen next?";
+"Yes" = "Yes";
+"Boom" = "Boom";
+"No" = "No";
+"No, it's no" = "No, it's no";
+"Big red button" = "Big red button";
+"Waiting for something..." = "Waiting for something...";
+"Set Status..." = "Set Status...";
+"Photos" = "Photos";
+"Status" = "Status";
+"Photo Gallery" = "Photo Gallery";
+"Second button" = "Second button";
+"Open the map" = "Open the map";
+"password" = "password";
+"click" = "click";
+"Incorrect" = "Incorrect";
+"Correct" = "Correct";
+"Posts" = "Posts";

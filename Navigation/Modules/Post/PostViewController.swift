@@ -14,7 +14,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0.54, green: 0.35, blue: 0.84, alpha: 1)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Status", style: .plain, target: self, action: #selector(goToInfo(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Status".localized, style: .plain, target: self, action: #selector(goToInfo(sender:)))
     }
     
     func setupTitle(_ title: String){
