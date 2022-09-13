@@ -54,6 +54,7 @@
 		0A9A05C1271C726F00D49AEE /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9A05C0271C726F00D49AEE /* TabBar.swift */; };
 		0A9B1F3F27CEC320009DF41A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9B1F3E27CEC320009DF41A /* iOSIntPackage */; };
 		0A9D1153271B8347003E8C14 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D1152271B8347003E8C14 /* FeedViewController.swift */; };
+		0AA887F628D11F18009AC179 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA887F528D11F18009AC179 /* LocalNotificationsService.swift */; };
 		0AA97A64288B708E0024EA09 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA97A63288B708E0024EA09 /* MapViewController.swift */; };
 		0AB2DE9B27CEE88E0031F779 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB2DE9A27CEE88E0031F779 /* Media.xcassets */; };
 		0AB2DE9D27DD4C880031F779 /* Custom Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2DE9C27DD4C880031F779 /* Custom Button.swift */; };
@@ -168,6 +169,7 @@
 		0A970C0927C5A8CC00F5B6C5 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		0A9A05C0271C726F00D49AEE /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		0A9D1152271B8347003E8C14 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		0AA887F528D11F18009AC179 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		0AA97A63288B708E0024EA09 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0AB2DE9A27CEE88E0031F779 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		0AB2DE9C27DD4C880031F779 /* Custom Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Button.swift"; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				0AFD77EA2718D6F5006F8DBB /* LaunchScreen.storyboard */,
 				0AFD77DF2718D6F3006F8DBB /* AppDelegate.swift */,
 				0AFD77E12718D6F3006F8DBB /* SceneDelegate.swift */,
+				0AA887F528D11F18009AC179 /* LocalNotificationsService.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				0A77AD2E27F48E9D00DD058C /* FeedPresenter.swift in Sources */,
 				0A844A232745207600C2DB82 /* PhotosViewController.swift in Sources */,
 				0AFD77E22718D6F3006F8DBB /* SceneDelegate.swift in Sources */,
+				0AA887F628D11F18009AC179 /* LocalNotificationsService.swift in Sources */,
 				0A970BEF27BDA25A00F5B6C5 /* UserService.swift in Sources */,
 				0A844A2727452AB800C2DB82 /* PhotoData.swift in Sources */,
 				0ACBCD1128C7925600567F79 /* LocalAuthorizationService.swift in Sources */,
